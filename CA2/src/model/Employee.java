@@ -18,13 +18,13 @@ public class Employee {
     private int id;
     private String name;
     private Calendar dob;
-    private Calendar rdate;
+    private Calendar sdate;
     
     public Employee(String name, int id, Calendar dob, Calendar startDate){
         this.name = name;
         this.id = id;
-        this.dob = startDate;
-        this.rdate = rdate;
+        this.dob = dob;
+        this.sdate = sdate;
     }
 
     public int getId() {
@@ -39,8 +39,8 @@ public class Employee {
         return dob;
     }
 
-    public Calendar getRdate() {
-        return rdate;
+    public Calendar getSdate() {
+        return sdate;
     }
 
     public void setId(int id) {
@@ -55,7 +55,7 @@ public class Employee {
         this.dob = dob;
     }
 
-    public void setRdate(Calendar rdate) {
-        this.rdate = rdate;
+    public void setRdate(Calendar sdate) {
+        this.sdate = sdate;
     }
 }
