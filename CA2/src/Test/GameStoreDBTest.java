@@ -23,12 +23,13 @@ public class GameStoreDBTest {
         
         eo.openDB();
         eo.dropEmployeeSequence();
-        eo.createEmployeeSequence();
+        eo.dropManagerSequence();
         eo.dropManagerTable();
         eo.dropEmployeeTable();
+        eo.createEmployeeSequence();
         eo.createEmployeetable();
         eo.fillEmployeeTable();
-        
+        eo.createManagerSequence();
         eo.createManagerTable();
         
     }

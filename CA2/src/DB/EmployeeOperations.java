@@ -9,14 +9,14 @@ package DB;
  *
  * @author x00149335
  */
-
 import java.sql.*;
 import oracle.jdbc.pool.OracleDataSource;
+
 public class EmployeeOperations {
-    
+
     private Connection conn;
     private PreparedStatement pstmt;
-    
+
     public Connection openDB() {
         try {
             OracleDataSource ods = new OracleDataSource();
@@ -37,7 +37,7 @@ public class EmployeeOperations {
         }
         return conn;
     }
-    
+
     public void dropEmployeeSequence() {
         try {
             String s2 = "drop sequence eid_seq";
@@ -45,10 +45,10 @@ public class EmployeeOperations {
             pstmt.executeUpdate();
             System.out.println("Employee Sequence dropped");
         } catch (SQLException ex) {
-            
+
         }
     }
-    
+
     public void createEmployeeSequence() {
         // Creating a sequence    
         try {
@@ -61,7 +61,7 @@ public class EmployeeOperations {
         }
 
     }
-    
+
     public void dropEmployeeTable() {
         System.out.println("Checking for existence of Employee table");
         try {
@@ -73,7 +73,7 @@ public class EmployeeOperations {
             System.out.println(ex);
         }
     }
-    
+
     public void createEmployeetable() {
         // Create a Table           
         try {
@@ -90,9 +90,9 @@ public class EmployeeOperations {
                     + "Employee table" + ex.getMessage());
         }
     }
-    
-    public void dropManagerTable(){
-            System.out.println("Checking for existence of Manager table");
+
+    public void dropManagerTable() {
+        System.out.println("Checking for existence of Manager table");
         try {
             String s2 = "DROP TABLE Manager";
             pstmt = conn.prepareStatement(s2);
@@ -100,12 +100,33 @@ public class EmployeeOperations {
             System.out.println("Manager table dropped");
         } catch (SQLException ex) {
             System.out.println(ex);
-        }   
         }
+    }
     
-    public void createManagerTable(){
+    public void dropManagerSequence(){
+         try {
+            String s3 = "drop sequence mid_seq";
+            pstmt = conn.prepareStatement(s3);
+            pstmt.executeUpdate();
+            System.out.println("Manager Sequence dropped");
+        } catch (SQLException ex) {
+        }
+    }
+    
+    public void createManagerSequence(){
         try {
-            
+            String createseq2 = "create sequence mid_seq increment by 1 start with 1";
+            pstmt = conn.prepareStatement(createseq2);
+            pstmt.executeUpdate();
+            System.out.println("Manager Sequence created");
+        } catch (SQLException ex) {
+            System.out.print("Problem with Manager Sequence " + ex.getMessage());
+        }
+    }
+
+    public void createManagerTable() {
+        try {
+
             String sq2 = "CREATE TABLE Manager (mID NUMBER PRIMARY KEY "
                     + "NOT NULL,"
                     + "empid NUMBER NOT NULL,"
@@ -117,9 +138,7 @@ public class EmployeeOperations {
                     + "Manager table" + ex.getMessage());
         }
     }
-    
-    
-    
+
     public void fillEmployeeTable() {
         try {
             // Insert data into table
@@ -127,8 +146,7 @@ public class EmployeeOperations {
                     + "values(sid_seq.nextVal,?,?,?)";
             pstmt = conn.prepareStatement(sql);
 
-            
-            pstmt.setString(1,"Karl Blair");
+            pstmt.setString(1, "Karl Blair");
             pstmt.setDate(2, Date.valueOf("1999-11-01"));
             pstmt.setDate(3, Date.valueOf("2018-11-22"));
             pstmt.executeUpdate();
@@ -152,7 +170,6 @@ public class EmployeeOperations {
 //            pstmt.setDate(2, Date.valueOf("1980-08-16"));
 //            pstmt.setDate(3, Date.valueOf("2018-09-25"));
 //            pstmt.executeUpdate();
-
             System.out.println("Employee table populated");
         } catch (SQLException ex) {
             System.out.println("SQL Exception inserting values into "
