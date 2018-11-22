@@ -20,6 +20,14 @@ public class Manager extends Employee {
     }
 
     private String mID;
+    
+    public Manager(){
+        
+    }
+
+    public Manager(String mID) {
+        this.mID = mID;
+    }
 
     public void setmID(String mID) {
         this.mID = mID;

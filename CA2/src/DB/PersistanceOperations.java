@@ -15,6 +15,7 @@ import javax.persistence.*;
 import java.util.List;
 import model.Employee;
 import model.FullTimeEmployee;
+import model.Manager;
 import model.PartTimeEmployee;
 
 public class PersistanceOperations {
@@ -63,6 +64,30 @@ public class PersistanceOperations {
         }
         em.getTransaction().commit();
     }
+    
+     public void addEmployee(String name) {
+        em.getTransaction().begin();
+        Employee e = new Employee();
+        e.setName(name);
+        em.persist(e);
+        em.getTransaction().commit();
+    }
+     
+     public void addManager(String name) {
+         em.getTransaction().begin();
+         Manager m = new Manager();
+         m.setName(name);
+         em.persist(m);
+         em.getTransaction().commit();
+     }
+     
+//     public void deleteEmployee(int empid) {
+//        Employee e = em.find(Employee.class, empid);
+//        em.getTransaction().begin();
+//        em.remove(e);
+//        e.remove();
+//        em.getTransaction().commit();
+//    }
     
 //    public void showProjectMangers(){
 //        em.getTransaction().begin();

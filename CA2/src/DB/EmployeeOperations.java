@@ -102,9 +102,9 @@ public class EmployeeOperations {
             System.out.println(ex);
         }
     }
-    
-    public void dropManagerSequence(){
-         try {
+
+    public void dropManagerSequence() {
+        try {
             String s3 = "drop sequence mid_seq";
             pstmt = conn.prepareStatement(s3);
             pstmt.executeUpdate();
@@ -112,8 +112,8 @@ public class EmployeeOperations {
         } catch (SQLException ex) {
         }
     }
-    
-    public void createManagerSequence(){
+
+    public void createManagerSequence() {
         try {
             String createseq2 = "create sequence mid_seq increment by 1 start with 1";
             pstmt = conn.prepareStatement(createseq2);
@@ -151,25 +151,26 @@ public class EmployeeOperations {
             pstmt.setDate(3, Date.valueOf("2018-11-22"));
             pstmt.executeUpdate();
 
-//            pstmt.setString(1, "Adam Brennan");
-//            pstmt.setDate(2, Date.valueOf("1997-02-23"));
-//            pstmt.setDate(3, Date.valueOf("2018-09-13"));
-//            pstmt.executeUpdate();
-//
-//            pstmt.setString(1, "David Bird");
-//            pstmt.setDate(2, Date.valueOf("1990-03-04"));
-//            pstmt.setDate(3, Date.valueOf("2018-09-25"));
-//            pstmt.executeUpdate();
-//
-//            pstmt.setString(1, "Paris Hilton");
-//            pstmt.setDate(2, Date.valueOf("1996-02-19"));
-//            pstmt.setDate(3, Date.valueOf("2018-09-28"));
-//            pstmt.executeUpdate();
-//
-//            pstmt.setString(1, "John Joe");
-//            pstmt.setDate(2, Date.valueOf("1980-08-16"));
-//            pstmt.setDate(3, Date.valueOf("2018-09-25"));
-//            pstmt.executeUpdate();
+            pstmt.setString(1, "Adam Brennan");
+            pstmt.setDate(2, Date.valueOf("1999-05-01"));
+            pstmt.setDate(3, Date.valueOf("2018-11-22"));
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "David Bird");
+            pstmt.setDate(2, Date.valueOf("1998-11-01"));
+            pstmt.setDate(3, Date.valueOf("2018-11-22"));
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "John Joe");
+            pstmt.setDate(2, Date.valueOf("1999-11-01"));
+            pstmt.setDate(3, Date.valueOf("2018-11-22"));
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Joe Bloggs");
+            pstmt.setDate(2, Date.valueOf("1999-11-01"));
+            pstmt.setDate(3, Date.valueOf("2018-11-22"));
+            pstmt.executeUpdate();
+            
             System.out.println("Employee table populated");
         } catch (SQLException ex) {
             System.out.println("SQL Exception inserting values into "

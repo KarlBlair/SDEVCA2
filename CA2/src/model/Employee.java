@@ -18,6 +18,9 @@ public class Employee {
     private String name;
     private Calendar dob;
     private Calendar sdate;
+
+    public Employee() {
+    }
     
     public Employee(String name, int id, Calendar dob, Calendar startDate){
         this.name = name;
