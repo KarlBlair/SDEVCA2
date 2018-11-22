@@ -18,12 +18,18 @@ public class GameStoreDBTest {
         
         EmployeeOperations eo = new EmployeeOperations();
         
+        //Had to drop the Manager table first before dropping Employee as Manager is dependant on Employee. 
+        
+        
         eo.openDB();
         eo.dropEmployeeSequence();
         eo.createEmployeeSequence();
+        eo.dropManagerTable();
         eo.dropEmployeeTable();
         eo.createEmployeetable();
         eo.fillEmployeeTable();
+        
+        eo.createManagerTable();
         
     }
 }

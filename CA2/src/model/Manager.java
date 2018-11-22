@@ -11,13 +11,22 @@ import java.util.Calendar;
  *
  * @author x00149335
  */
-
 import java.util.Calendar;
 
-public class Manager extends Employee{
-    
+public class Manager extends Employee {
+
     public Manager(String name, int id, Calendar dob, Calendar startDate) {
         super(name, id, dob, startDate);
     }
-    
+
+    private String mID;
+
+    public void setmID(String mID) {
+        this.mID = mID;
+    }
+
+    public String getmID() {
+        return mID;
+    }
+
 }

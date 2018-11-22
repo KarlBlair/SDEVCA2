@@ -91,6 +91,35 @@ public class EmployeeOperations {
         }
     }
     
+    public void dropManagerTable(){
+            System.out.println("Checking for existence of Manager table");
+        try {
+            String s2 = "DROP TABLE Manager";
+            pstmt = conn.prepareStatement(s2);
+            pstmt.executeUpdate();
+            System.out.println("Manager table dropped");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }   
+        }
+    
+    public void createManagerTable(){
+        try {
+            
+            String sq2 = "CREATE TABLE Manager (mID NUMBER PRIMARY KEY "
+                    + "NOT NULL,"
+                    + "empid NUMBER NOT NULL,"
+                    + "FOREIGN KEY (empid) REFERENCES Employee(empid))";
+            pstmt = conn.prepareStatement(sq2);
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("SQL Exception creating "
+                    + "Manager table" + ex.getMessage());
+        }
+    }
+    
+    
+    
     public void fillEmployeeTable() {
         try {
             // Insert data into table
