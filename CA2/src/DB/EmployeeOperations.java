@@ -94,7 +94,7 @@ public class EmployeeOperations {
         }
     }
     
-    public void fillStudentTable() {
+    public void fillEmployeeTable() {
         try {
             // Insert data into table
             String sql = "INSERT INTO Employee(id,name,dob,startDate) "
@@ -133,4 +133,20 @@ public class EmployeeOperations {
         }
     }
     
+//    public void createProjectTable() {
+//        try{
+//            
+//            
+//            
+//            
+//            
+//        } catch (SQLException ex) {
+//            System.out.println("SQL Exception creating "
+//                    + "Project table" + ex.getMessage());
+//        }
+//        
+//        
+//        
+//        
+//    }
 }

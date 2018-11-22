@@ -2,7 +2,6 @@ package model;
 
 
 import java.util.Calendar;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,7 +23,7 @@ public class Employee {
         this.name = name;
         this.id = id;
         this.dob = dob;
-        this.sdate = sdate;
+        this.sdate = startDate;
     }
 
     public int getId() {

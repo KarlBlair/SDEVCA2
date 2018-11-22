@@ -10,8 +10,8 @@ package DB;
  * @author x00149335
  */
 import javax.persistence.*;
-import java.sql.*;
-import java.util.Calendar;
+//import java.sql.*;
+//import java.util.Calendar;
 import java.util.List;
 import model.Employee;
 import model.FullTimeEmployee;
@@ -31,7 +31,7 @@ public class PersistanceOperations {
         em.getTransaction().begin();
 
         TypedQuery<Employee> query
-                = em.createQuery("SELECT e FROM Employees e order by e.ID",
+                = em.createQuery("SELECT e FROM Employee e order by e.ID",
                         Employee.class);
         List<Employee> results = query.getResultList();
         for (Employee e : results) {
@@ -62,5 +62,17 @@ public class PersistanceOperations {
             System.out.println(ft);
         }
         em.getTransaction().commit();
+    }
+    
+//    public void showProjectMangers(){
+//        em.getTransaction().begin();
+//        TypedQuert<Project> query
+//                = em.createQuery("SELECT QE FROM Project QE"
+//                        + "order by QE.managerID", Project.class)
+//    }
+    
+    public void close() {
+        em.close();
+        emf.close();
     }
 }
