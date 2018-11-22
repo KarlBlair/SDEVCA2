@@ -71,6 +71,10 @@ public class PersistanceOperations {
 //                        + "order by QE.managerID", Project.class)
 //    }
     
+    
+    
+    
+    
     public void close() {
         em.close();
         emf.close();

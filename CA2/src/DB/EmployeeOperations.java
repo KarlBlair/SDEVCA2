@@ -65,26 +65,23 @@ public class EmployeeOperations {
     public void dropEmployeeTable() {
         System.out.println("Checking for existence of Employee table");
         try {
-            String s1 = "DROP TABLE Employee2";
+            String s1 = "DROP TABLE Employee";
             pstmt = conn.prepareStatement(s1);
             pstmt.executeUpdate();
             System.out.println("Employee table dropped");
         } catch (SQLException ex) {
-            
+            System.out.println(ex);
         }
     }
     
     public void createEmployeetable() {
         // Create a Table           
         try {
-            String sql = "CREATE TABLE Employees (empid NUMBER PRIMARY KEY "
+            String sql = "CREATE TABLE Employee (empid NUMBER PRIMARY KEY "
                     + "NOT NULL,"
-                    + "type VARCHAR2(5),"
-                    + "name VARCHAR2(40),"
-                    + "startDate DATE,"
-                    + "salary DECIMAL(8,2),"
-                    + "rate DECIMAL(5,2)," 
-                    + "hours DECIMAL(5,2))";
+                    + "fullName VARCHAR2(40),"
+                    + "dob DATE,"
+                    + "startDate DATE)";
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
 
@@ -97,34 +94,35 @@ public class EmployeeOperations {
     public void fillEmployeeTable() {
         try {
             // Insert data into table
-            String sql = "INSERT INTO Employee(id,name,dob,startDate) "
+            String sql = "INSERT INTO Employee(empid,fullName,dob,startDate) "
                     + "values(sid_seq.nextVal,?,?,?)";
             pstmt = conn.prepareStatement(sql);
 
-            pstmt.setString(1, "Karl Blair");
-            pstmt.setDate(2, Date.valueOf("1999-01-23"));
-            pstmt.setDate(3, Date.valueOf("2018-09-13"));
+            
+            pstmt.setString(1,"Karl Blair");
+            pstmt.setDate(2, Date.valueOf("1999-11-01"));
+            pstmt.setDate(3, Date.valueOf("2018-11-22"));
             pstmt.executeUpdate();
 
-            pstmt.setString(1, "Adam Brennan");
-            pstmt.setDate(2, Date.valueOf("1997-02-23"));
-            pstmt.setDate(3, Date.valueOf("2018-09-13"));
-            pstmt.executeUpdate();
-
-            pstmt.setString(1, "David Bird");
-            pstmt.setDate(2, Date.valueOf("1990-03-04"));
-            pstmt.setDate(3, Date.valueOf("2018-09-25"));
-            pstmt.executeUpdate();
-
-            pstmt.setString(1, "Paris Hilton");
-            pstmt.setDate(2, Date.valueOf("1996-02-19"));
-            pstmt.setDate(3, Date.valueOf("2018-09-28"));
-            pstmt.executeUpdate();
-
-            pstmt.setString(1, "John Joe");
-            pstmt.setDate(2, Date.valueOf("1980-08-16"));
-            pstmt.setDate(3, Date.valueOf("2018-09-25"));
-            pstmt.executeUpdate();
+//            pstmt.setString(1, "Adam Brennan");
+//            pstmt.setDate(2, Date.valueOf("1997-02-23"));
+//            pstmt.setDate(3, Date.valueOf("2018-09-13"));
+//            pstmt.executeUpdate();
+//
+//            pstmt.setString(1, "David Bird");
+//            pstmt.setDate(2, Date.valueOf("1990-03-04"));
+//            pstmt.setDate(3, Date.valueOf("2018-09-25"));
+//            pstmt.executeUpdate();
+//
+//            pstmt.setString(1, "Paris Hilton");
+//            pstmt.setDate(2, Date.valueOf("1996-02-19"));
+//            pstmt.setDate(3, Date.valueOf("2018-09-28"));
+//            pstmt.executeUpdate();
+//
+//            pstmt.setString(1, "John Joe");
+//            pstmt.setDate(2, Date.valueOf("1980-08-16"));
+//            pstmt.setDate(3, Date.valueOf("2018-09-25"));
+//            pstmt.executeUpdate();
 
             System.out.println("Employee table populated");
         } catch (SQLException ex) {
@@ -132,21 +130,4 @@ public class EmployeeOperations {
                     + "Employee table" + ex.getMessage());
         }
     }
-    
-//    public void createProjectTable() {
-//        try{
-//            
-//            
-//            
-//            
-//            
-//        } catch (SQLException ex) {
-//            System.out.println("SQL Exception creating "
-//                    + "Project table" + ex.getMessage());
-//        }
-//        
-//        
-//        
-//        
-//    }
 }
