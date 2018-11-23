@@ -69,7 +69,7 @@ public class PersistanceOperations {
         em.getTransaction().begin();
         Employee e = new Employee();
         e.setName(name);
-        em.persist(e);
+//        em.persist(e);
         em.getTransaction().commit();
     }
      
@@ -88,17 +88,6 @@ public class PersistanceOperations {
 //        e.remove();
 //        em.getTransaction().commit();
 //    }
-    
-//    public void showProjectMangers(){
-//        em.getTransaction().begin();
-//        TypedQuert<Project> query
-//                = em.createQuery("SELECT QE FROM Project QE"
-//                        + "order by QE.managerID", Project.class)
-//    }
-    
-    
-    
-    
     
     public void close() {
         em.close();

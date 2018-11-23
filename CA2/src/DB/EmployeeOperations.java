@@ -80,6 +80,7 @@ public class EmployeeOperations {
             String sql = "CREATE TABLE Employee (empid NUMBER PRIMARY KEY "
                     + "NOT NULL,"
                     + "fullName VARCHAR2(40),"
+                    + "type VARCHAR2(40),"
                     + "dob DATE,"
                     + "startDate DATE)";
             pstmt = conn.prepareStatement(sql);
@@ -130,6 +131,7 @@ public class EmployeeOperations {
             String sq2 = "CREATE TABLE Manager (mID NUMBER PRIMARY KEY "
                     + "NOT NULL,"
                     + "empid NUMBER NOT NULL,"
+                    + "type VARCHAR2(40),"
                     + "FOREIGN KEY (empid) REFERENCES Employee(empid))";
             pstmt = conn.prepareStatement(sq2);
             pstmt.executeUpdate();

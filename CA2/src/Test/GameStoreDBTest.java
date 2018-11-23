@@ -45,6 +45,8 @@ public class GameStoreDBTest {
             System.out.println("Please press 5 to view all Part Time Employees");
             System.out.println("Please press 6 to view all Employees");
 
+            System.out.println("Please press 9 to exit");
+
             int choice = in.nextInt();
 
             switch (choice) {
@@ -52,10 +54,16 @@ public class GameStoreDBTest {
                     System.out.println("Enter the name of the Employee you want to add ");
                     String name = in.nextLine();
                     po.addEmployee(name);
+                    break;
                 case 2:
                     System.out.println("Enter the name of the Manger you want to add ");
                     String mName = in.nextLine();
                     po.addManager(mName);
+                    break;
+
+                case 9:
+                    po.close();
+                    break;
             }
 
         }
