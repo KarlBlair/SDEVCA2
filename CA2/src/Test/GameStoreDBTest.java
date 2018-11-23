@@ -60,7 +60,26 @@ public class GameStoreDBTest {
                     String mName = in.nextLine();
                     po.addManager(mName);
                     break;
-
+                case 3:
+                    System.out.println("Enter the ID of the Employee you want to remove ");
+                    String empid = in.nextLine();
+//                    po.removeEmployee(empid);
+                    break;
+                case 4:
+                    System.out.println("Enter the ID of the Manager you want to remove ");
+                    String mID = in.nextLine();
+//                    po.removeManager(mID);
+                      break;
+                case 5:
+                    po.showALLFT();
+                    break;
+                case 6:
+                    po.showAllEmployess();
+                    break;
+                    
+                case 7:
+                    po.showAllPT();
+                    break;
                 case 9:
                     po.close();
                     break;
