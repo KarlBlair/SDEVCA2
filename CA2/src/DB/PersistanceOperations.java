@@ -28,7 +28,7 @@ public class PersistanceOperations {
         em = emf.createEntityManager();
     }
 
-    public void showAllEmployess() {
+    public void showAllEmployees() {
         em.getTransaction().begin();
 
         TypedQuery<Employee> query
@@ -52,8 +52,8 @@ public class PersistanceOperations {
         }
         em.getTransaction().commit();
     }
-    
-    public void showALLFT(){
+
+    public void showALLFT() {
         em.getTransaction().begin();
         TypedQuery<FullTimeEmployee> query
                 = em.createQuery("SELECT ft FROM FullTimeEmployee ft "
@@ -64,23 +64,23 @@ public class PersistanceOperations {
         }
         em.getTransaction().commit();
     }
-    
-     public void addEmployee(String name) {
+
+    public void addEmployee(String name) {
         em.getTransaction().begin();
         Employee e = new Employee();
         e.setName(name);
 //        em.persist(e);
         em.getTransaction().commit();
     }
-     
-     public void addManager(String name) {
-         em.getTransaction().begin();
-         Manager m = new Manager();
-         m.setName(name);
-         em.persist(m);
-         em.getTransaction().commit();
-     }
-     
+
+    public void addManager(String name) {
+        em.getTransaction().begin();
+        Manager m = new Manager();
+        m.setName(name);
+        em.persist(m);
+        em.getTransaction().commit();
+    }
+
 //     public void deleteEmployee(int empid) {
 //        Employee e = em.find(Employee.class, empid);
 //        em.getTransaction().begin();
@@ -88,7 +88,6 @@ public class PersistanceOperations {
 //        e.remove();
 //        em.getTransaction().commit();
 //    }
-    
     public void close() {
         em.close();
         emf.close();

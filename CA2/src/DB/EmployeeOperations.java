@@ -144,33 +144,38 @@ public class EmployeeOperations {
     public void fillEmployeeTable() {
         try {
             // Insert data into table
-            String sql = "INSERT INTO Employee(empid,fullName,dob,startDate) "
-                    + "values(sid_seq.nextVal,?,?,?)";
+            String sql = "INSERT INTO Employee(empid,fullName,dob,startDate,type) "
+                    + "values(sid_seq.nextVal,?,?,?,?)";
             pstmt = conn.prepareStatement(sql);
 
             pstmt.setString(1, "Karl Blair");
             pstmt.setDate(2, Date.valueOf("1999-11-01"));
             pstmt.setDate(3, Date.valueOf("2018-11-22"));
+            pstmt.setString(4, "FullTimeEmployee");
             pstmt.executeUpdate();
 
             pstmt.setString(1, "Adam Brennan");
             pstmt.setDate(2, Date.valueOf("1999-05-01"));
             pstmt.setDate(3, Date.valueOf("2018-11-22"));
+            pstmt.setString(4, "FullTimeEmployee");
             pstmt.executeUpdate();
 
             pstmt.setString(1, "David Bird");
             pstmt.setDate(2, Date.valueOf("1998-11-01"));
             pstmt.setDate(3, Date.valueOf("2018-11-22"));
+            pstmt.setString(4, "ParTimeEmployee");
             pstmt.executeUpdate();
 
             pstmt.setString(1, "John Joe");
             pstmt.setDate(2, Date.valueOf("1999-11-01"));
             pstmt.setDate(3, Date.valueOf("2018-11-22"));
+            pstmt.setString(4, "ParTimeEmployee");
             pstmt.executeUpdate();
 
             pstmt.setString(1, "Joe Bloggs");
             pstmt.setDate(2, Date.valueOf("1999-11-01"));
             pstmt.setDate(3, Date.valueOf("2018-11-22"));
+            pstmt.setString(4, "FullTimeEmployee");
             pstmt.executeUpdate();
             
             System.out.println("Employee table populated");
