@@ -20,15 +20,17 @@ public class EmployeeOperations {
     public Connection openDB() {
         try {
             OracleDataSource ods = new OracleDataSource();
-
-            // Tallaght
-//             ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
-//             ods.setUser("pmagee");
-//             ods.setPassword("tupulo");
-            // Home Oracle XE
-            ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
-            ods.setUser("x00149335");
-            ods.setPassword("db01Nov99");
+            boolean inCollege = true;
+            
+            if(inCollege) {
+                ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
+                ods.setUser("x00149335");
+                ods.setPassword("db01Nov99");
+            } else {
+                ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
+                ods.setUser("sysdb");
+                ods.setPassword("db01Nov99");
+            }
 
             conn = ods.getConnection();
             System.out.println("connected.");
@@ -86,6 +88,22 @@ public class EmployeeOperations {
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
 
+        } catch (SQLException ex) {
+            System.out.println("SQL Exception creating "
+                    + "Employee table" + ex.getMessage());
+        }
+    }
+    
+    public void createGamesTable() {
+        try {
+            String sql = "CREATE TABLE Game (" +
+                    "gameid NUMBER PRIMARY KEY NOT NULL," +
+                    "gameName VARCHAR2(255)," +
+                    "gameDeveloper VARCHAR2(255)" + // Maybe have seperate class for this
+                    "releaseDate DATE)";
+            
+            pstmt = conn.prepareStatement(sql);
+            pstmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("SQL Exception creating "
                     + "Employee table" + ex.getMessage());
