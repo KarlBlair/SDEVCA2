@@ -84,7 +84,7 @@ public class EmployeeOperations {
                     + "fullName VARCHAR2(40),"
                     + "type VARCHAR2(40),"
                     + "dob DATE,"
-                    + "startDate DATE)";
+                    + "sdate DATE)";
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
 
@@ -162,7 +162,7 @@ public class EmployeeOperations {
     public void fillEmployeeTable() {
         try {
             // Insert data into table
-            String sql = "INSERT INTO Employee(empid,fullName,dob,startDate,type) "
+            String sql = "INSERT INTO Employee(empid,fullName,dob,sdate,type) "
                     + "values(sid_seq.nextVal,?,?,?,?)";
             pstmt = conn.prepareStatement(sql);
 

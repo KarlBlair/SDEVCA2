@@ -3,9 +3,6 @@
   <persistence-unit name="CA2PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>model.Employee</class>
-    <class>model.FullTimeEmployee</class>
-    <class>model.PartTimeEmployee</class>
-    <class>model.Manager</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@//10.10.2.7:1521/global1"/>
       <property name="javax.persistence.jdbc.user" value="x00149335"/>

@@ -77,7 +77,7 @@ public class GameStoreDBTest {
 //                    po.removeManager(mID);
                       break;
                 case 5:
-                    po.showALLFT();
+                    //po.showALLFT();
                     break;
                 case 6:
                     po.showAllEmployees();

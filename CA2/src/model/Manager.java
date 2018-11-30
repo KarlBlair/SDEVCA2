@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.sql.Date;
 import java.util.Calendar;
 
 /**
@@ -15,8 +16,8 @@ import java.util.Calendar;
 
 public class Manager extends Employee {
 
-    public Manager(String name, int id, Calendar dob, Calendar startDate) {
-        super(name, id, dob, startDate);
+    public Manager(String name, int id, Date dob, Date sdate) {
+        super(name, id, dob, sdate);
     }
 
     private String mID;

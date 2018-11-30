@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.sql.Date;
 import java.util.Calendar;
 
 /**
@@ -16,8 +17,8 @@ public class PartTimeEmployee extends Employee {
     private double rateOfPay;
     private double hours;
     
-    public PartTimeEmployee(String name, int id, Calendar dob, Calendar startDate) {
-        super(name, id, dob, startDate);
+    public PartTimeEmployee(String name, int id, Date dob, Date sdate) {
+        super(name, id, dob, sdate);
     }
 
     public double getRateOfPay() {

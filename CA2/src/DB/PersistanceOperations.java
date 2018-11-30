@@ -14,7 +14,6 @@ import javax.persistence.*;
 //import java.util.Calendar;
 import java.util.List;
 import model.Employee;
-import model.FullTimeEmployee;
 import model.Manager;
 import model.PartTimeEmployee;
 
@@ -32,7 +31,7 @@ public class PersistanceOperations {
         em.getTransaction().begin();
 
         TypedQuery<Employee> query
-                = em.createQuery("SELECT e FROM Employee e order by e.ID",
+                = em.createQuery("SELECT empid FROM Employee empid",
                         Employee.class);
         List<Employee> results = query.getResultList();
         for (Employee e : results) {
@@ -53,7 +52,7 @@ public class PersistanceOperations {
         em.getTransaction().commit();
     }
 
-    public void showALLFT() {
+    /*public void showALLFT() {
         em.getTransaction().begin();
         TypedQuery<FullTimeEmployee> query
                 = em.createQuery("SELECT ft FROM FullTimeEmployee ft "
@@ -63,7 +62,7 @@ public class PersistanceOperations {
             System.out.println(ft);
         }
         em.getTransaction().commit();
-    }
+    }*/
 
     public void addEmployee(String name) {
         em.getTransaction().begin();
