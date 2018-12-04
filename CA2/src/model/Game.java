@@ -10,17 +10,22 @@ package model;
  * @author X00149095
  */
 import javax.persistence.*;
+import java.util.Date;
 public class Game {
     
     private int gameID;
     private String gameName, gameDeveloper;
-//    private String dateAdded = 
+    private String releaseDate;
     // add a date
     
     public Game(int gameID, String gameName, String gameDeveloper) {
         this.gameID = gameID;
         this.gameName = gameName;
         this.gameDeveloper = gameDeveloper;
+    }
+
+    public Game() {
+        
     }
 
     public int getGameID() {

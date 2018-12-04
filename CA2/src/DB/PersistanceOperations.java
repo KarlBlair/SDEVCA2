@@ -14,6 +14,7 @@ import javax.persistence.*;
 //import java.util.Calendar;
 import java.util.List;
 import model.Employee;
+import model.Game;
 import model.Manager;
 //import model.PartTimeEmployee;
 
@@ -58,6 +59,15 @@ public class PersistanceOperations {
         Employee e = new Employee();
         e.setName(name);
         em.persist(e);
+        em.getTransaction().commit();
+    }
+    
+    public void addGame(String gameName, String gameDeveloper) {
+        em.getTransaction().begin();
+        Game g = new Game();
+        g.setGameName(gameName);
+        g.setGameDeveloper(gameDeveloper);
+        em.persist(g);
         em.getTransaction().commit();
     }
 

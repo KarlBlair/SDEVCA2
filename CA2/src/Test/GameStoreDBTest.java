@@ -27,11 +27,16 @@ public class GameStoreDBTest {
         eo.dropManagerSequence();
         eo.dropManagerTable();
         eo.dropEmployeeTable();
+        eo.dropGamesSequence();
+        eo.dropGamesTable();
+        
 
         eo.createEmployeeSequence();
         eo.createEmployeetable();
         eo.createManagerSequence();
         eo.createManagerTable();
+        eo.createGamesSequence();
+        eo.createGamesTable();
 
         eo.fillEmployeeTable();
         
@@ -45,6 +50,7 @@ public class GameStoreDBTest {
             System.out.println("Please press 3 to remove an Employee");
             System.out.println("Please press 4 to remove a Manager");
             System.out.println("Please press 5 to view all Employees");
+            System.out.println("add game");
             System.out.println("Please press 6 to exit");
 
             int choice = in.nextInt();
@@ -78,6 +84,8 @@ public class GameStoreDBTest {
                     po.showAllEmployees();
                     break;
                 case 6:
+//                    po.addGame(gameName, gameDeveloper);
+                case 7:
                     po.close();
                     run = false;
                     break;

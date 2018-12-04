@@ -51,6 +51,28 @@ public class EmployeeOperations {
         }
     }
     
+    public void createGamesSequence() {
+        try {
+            String createseq2 = "create sequence gid_seq increment by 1 start with 1";
+            pstmt = conn.prepareStatement(createseq2);
+            pstmt.executeUpdate();
+            System.out.println("Game Sequence created");
+        } catch (SQLException ex) {
+            System.out.print("Problem with Game Sequence " + ex.getMessage());
+        }
+    }
+    
+    public void dropGamesSequence() {
+        try {
+            String s3 = "drop sequence gid_seq";
+            pstmt = conn.prepareStatement(s3);
+            pstmt.executeUpdate();
+            System.out.println("Game Sequence Dropped");
+        } catch (SQLException e) {
+            System.out.println("ERROR while dropping Game sequence() method");
+        }
+    }
+    
     public void createEmployeeSequence() {
         // Creating a sequence    
         try {
@@ -61,7 +83,6 @@ public class EmployeeOperations {
         } catch (SQLException ex) {
             System.out.print("Problem with Employee Sequence " + ex.getMessage());
         }
-
     }
 
     public void dropEmployeeTable() {
@@ -76,13 +97,13 @@ public class EmployeeOperations {
         }
     }
     
-    public void dropGameTable() {
+    public void dropGamesTable() {
         System.out.println("Checking for existence of Game table");
         try {
-            String s1 = "DROP TABLE Game";
-            pstmt = conn.prepareStatement(s1);
+            String s2 = "DROP TABLE Games";
+            pstmt = conn.prepareStatement(s2);
             pstmt.executeUpdate();
-            System.out.println("Game table dropped");
+            System.out.println("Games table dropped");
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -107,17 +128,17 @@ public class EmployeeOperations {
     
     public void createGamesTable() {
         try {
-            String sql = "CREATE TABLE Game (" +
-                    "gameid NUMBER PRIMARY KEY NOT NULL," +
+            String sql = "CREATE TABLE Games " +
+                    "(gameid NUMBER PRIMARY KEY NOT NULL," +
                     "gameName VARCHAR2(255)," +
-                    "gameDeveloper VARCHAR2(255)" + // Maybe have seperate class for this
-                    "releaseDate DATE)";
-            
+                    "gameDeveloper VARCHAR2(255))"; // Maybe have seperate class for this
+//                    "releaseDate DATE)";
+
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("SQL Exception creating "
-                    + "Employee table" + ex.getMessage());
+                    + "Games table" + ex.getMessage());
         }
     }
 
