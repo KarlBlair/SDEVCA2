@@ -52,6 +52,7 @@ public class GameStoreDBTest {
             System.out.println("Please press 5 to view all Employees");
             System.out.println("Please press 6 to view all Games on Record");
             System.out.println("add game");
+            System.out.println("remove game");
             System.out.println("Please press 8 to exit");
 
             int choice = in.nextInt();
@@ -76,7 +77,7 @@ public class GameStoreDBTest {
                     po.deleteEmployee(empid);
                     break;
                 case 4:
-                    System.out.println("Enter the ID of the Manager you want to remove ");
+                    System.out.println("Enter the name of the Manager you want to remove ");
                     in.nextLine();
                     String mID = in.nextLine();
 //                  po.removeManager(mID);
@@ -86,6 +87,7 @@ public class GameStoreDBTest {
                     break;
                 case 6:
                     po.showAllGames();
+                    break;
                 case 7:
                     System.out.println("Please enter the name of the game you would like to add ");
                     in.nextLine();
@@ -95,7 +97,12 @@ public class GameStoreDBTest {
                     in.nextLine();
                     String gameDeveloper = in.nextLine();
                     po.addGame(gameName, gameDeveloper);
+                    break;
                 case 8:
+                    System.out.println("Please enter the name of the game you would like to remove ");
+                    in.nextLine();
+                    
+                case 9:
                     po.close();
                     run = false;
                     break;

@@ -62,6 +62,13 @@ public class PersistanceOperations {
         em.getTransaction().commit();
     }
     
+    public void updateEmployee(String name) {
+        Employee e = em.find(Employee.class, name);
+        em.getTransaction().begin();
+        
+        
+    }
+    
     public void addGame(String gameName, String gameDeveloper) {
         em.getTransaction().begin();
         Game g = new Game();
@@ -71,6 +78,12 @@ public class PersistanceOperations {
         em.getTransaction().commit();
     }
     
+    public void removeGame(String gameName, String gameDeveloper) {
+        Game g = em.find(Game.class, gameName);
+        em.getTransaction().begin();
+        em.remove(g);
+        em.getTransaction().commit();
+    }
     public void showAllGames() {
         em.getTransaction().begin();
 

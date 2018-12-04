@@ -76,7 +76,7 @@ public class EmployeeOperations {
     public void createEmployeeSequence() {
         // Creating a sequence    
         try {
-            String createseq1 = "create sequence eid_seq increment by 1 start with 1";
+            String createseq1 = "create sequence eid_seq increment by 1 start with 0";
             pstmt = conn.prepareStatement(createseq1);
             pstmt.executeUpdate();
             System.out.println("Employee Sequence created");
