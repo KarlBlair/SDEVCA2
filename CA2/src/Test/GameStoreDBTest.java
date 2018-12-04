@@ -44,10 +44,8 @@ public class GameStoreDBTest {
             System.out.println("Please press 2 to add a new Manager");
             System.out.println("Please press 3 to remove an Employee");
             System.out.println("Please press 4 to remove a Manager");
-            System.out.println("Please press 5 to view all Full Time Employees");
-            System.out.println("Please press 6 to view all Part Time Employees");
-            System.out.println("Please press 7 to view all Employees");
-            System.out.println("Please press 8 to exit");
+            System.out.println("Please press 5 to view all Employees");
+            System.out.println("Please press 6 to exit");
 
             int choice = in.nextInt();
 
@@ -80,12 +78,9 @@ public class GameStoreDBTest {
                     //po.showALLFT();
                     break;
                 case 6:
-                    po.showAllPT();
-                    break;
-                case 7:
                     po.showAllEmployees();
                     break;
-                case 8:
+                case 7:
                     po.close();
                     run = false;
                     break;

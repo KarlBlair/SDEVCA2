@@ -9,9 +9,12 @@ package model;
  *
  * @author X00149095
  */
+import javax.persistence.*;
 public class Game {
+    
     private int gameID;
     private String gameName, gameDeveloper;
+//    private String dateAdded = 
     // add a date
     
     public Game(int gameID, String gameName, String gameDeveloper) {

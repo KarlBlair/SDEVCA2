@@ -15,7 +15,7 @@ import javax.persistence.*;
 import java.util.List;
 import model.Employee;
 import model.Manager;
-import model.PartTimeEmployee;
+//import model.PartTimeEmployee;
 
 public class PersistanceOperations {
 
@@ -28,27 +28,15 @@ public class PersistanceOperations {
     }
 
     public void showAllEmployees() {
-        System.out.println("fredfred");
+//        System.out.println("fredfred");
         em.getTransaction().begin();
 
         TypedQuery<Employee> query
-                = em.createQuery("SELECT e FROM Employee e WHERE e.id = 1",
+                = em.createQuery("SELECT e FROM Employee e",
                         Employee.class);
         List<Employee> results = query.getResultList();
         for (Employee e : results) {
-            System.out.println(e);
-        }
-        em.getTransaction().commit();
-    }
-
-    public void showAllPT() {
-        em.getTransaction().begin();
-        TypedQuery<PartTimeEmployee> query
-                = em.createQuery("SELECT pt FROM PartTimeEmployee pt "
-                        + "order by pt.ID", PartTimeEmployee.class);
-        List<PartTimeEmployee> results = query.getResultList();
-        for (PartTimeEmployee pt : results) {
-            System.out.println(pt);
+            System.out.println(e.getName());
         }
         em.getTransaction().commit();
     }
