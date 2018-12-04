@@ -108,7 +108,7 @@ public class EmployeeOperations {
             System.out.println(ex);
         }
     }
-
+    
     public void createEmployeetable() {
         // Create a Table           
         try {
@@ -232,6 +232,32 @@ public class EmployeeOperations {
         } catch (SQLException ex) {
             System.out.println("SQL Exception inserting values into "
                     + "Employee table" + ex.getMessage());
+        }
+    }
+    
+    public void fillGamesTable() {
+        try {
+            // Insert data into table
+            String sql = "INSERT INTO Games(id,gameName,gameDeveloper) "
+                    + "values(sid_seq.nextVal,?,?)";
+            pstmt = conn.prepareStatement(sql);
+            
+            pstmt.setString(1, "Fortnite");
+            pstmt.setString(2, "Epic Games");
+            pstmt.executeUpdate();
+            
+            pstmt.setString(1, "Minecraft");
+            pstmt.setString(2, "Mojang");
+            pstmt.executeUpdate();
+            
+            pstmt.setString(1, "Club Penguin");
+            pstmt.setString(2, "Disney");
+            pstmt.executeUpdate();
+            
+            
+    } catch (SQLException e) {
+            System.out.println("SQL Exception inserting values into "
+                    + "Games table() method" + e.getMessage());
         }
     }
 }

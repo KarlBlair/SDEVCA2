@@ -70,6 +70,17 @@ public class PersistanceOperations {
         em.persist(g);
         em.getTransaction().commit();
     }
+    
+    public void showAllGames() {
+        em.getTransaction().begin();
+        TypedQuery<Game>query
+                = em.createQuery("SELECT g FROM Game g",
+                        Game.class);
+        List<Game> results = query.getResultList();
+        for (Game g : results) {
+            System.out.println(String.format("%s: %s", g.getGameName(), g.getGameDeveloper()));
+        }
+    }
 
     public void addManager(String name) {
         em.getTransaction().begin();
