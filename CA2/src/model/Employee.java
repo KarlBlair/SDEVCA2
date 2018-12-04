@@ -25,7 +25,7 @@ public class Employee {
     
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="eid_seq")
-    @Column(name="EMPID")
+    @Column(name="ID")
     private int id;
     private String name;
     private Date dob;

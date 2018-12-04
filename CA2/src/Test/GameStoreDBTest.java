@@ -17,6 +17,7 @@ public class GameStoreDBTest {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        boolean run = true;
 
         EmployeeOperations eo = new EmployeeOperations();
 
@@ -38,7 +39,7 @@ public class GameStoreDBTest {
         
         PersistanceOperations po = new PersistanceOperations();
         
-        while (true) {
+        while(run) {
             System.out.println("Please press 1 to add a new Employee");
             System.out.println("Please press 2 to add a new Manager");
             System.out.println("Please press 3 to remove an Employee");
@@ -46,8 +47,7 @@ public class GameStoreDBTest {
             System.out.println("Please press 5 to view all Full Time Employees");
             System.out.println("Please press 6 to view all Part Time Employees");
             System.out.println("Please press 7 to view all Employees");
-            System.out.println("Please press 8 to ");
-            System.out.println("Please press 9 to exit");
+            System.out.println("Please press 8 to exit");
 
             int choice = in.nextInt();
 
@@ -74,22 +74,20 @@ public class GameStoreDBTest {
                     System.out.println("Enter the ID of the Manager you want to remove ");
                     in.nextLine();
                     String mID = in.nextLine();
-//                    po.removeManager(mID);
-                      break;
+//                  po.removeManager(mID);
+                    break;
                 case 5:
                     //po.showALLFT();
                     break;
                 case 6:
-                    po.showAllEmployees();
-                    break;
-                case 7:
                     po.showAllPT();
                     break;
-                case 8:
-                    
+                case 7:
+                    po.showAllEmployees();
                     break;
-                case 9:
+                case 8:
                     po.close();
+                    run = false;
                     break;
             }
 

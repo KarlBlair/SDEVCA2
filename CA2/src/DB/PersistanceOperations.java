@@ -28,10 +28,11 @@ public class PersistanceOperations {
     }
 
     public void showAllEmployees() {
+        System.out.println("fredfred");
         em.getTransaction().begin();
 
         TypedQuery<Employee> query
-                = em.createQuery("SELECT empid FROM Employee empid",
+                = em.createQuery("SELECT e FROM Employee e WHERE e.id = 1",
                         Employee.class);
         List<Employee> results = query.getResultList();
         for (Employee e : results) {
