@@ -24,13 +24,13 @@ public class Game {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="gid_seq")
     @Column(name="ID")
     private int ID;
-    private String gameName, gameDeveloper;
+    private String gameName, gameGenre;
 //    private String releaseDate;
     // add a date
     
-    public Game(String gameName, String gameDeveloper) {
+    public Game(String gameName, String gameGenre) {
         this.gameName = gameName;
-        this.gameDeveloper = gameDeveloper;
+        this.gameGenre = gameGenre;
     }
 
     public Game() {
@@ -53,11 +53,11 @@ public class Game {
         this.gameName = gameName;
     }
 
-    public String getGameDeveloper() {
-        return gameDeveloper;
+    public String getGameGenre() {
+        return gameGenre;
     }
 
-    public void setGameDeveloper(String gameDeveloper) {
-        this.gameDeveloper = gameDeveloper;
+    public void setGameGenre(String gameGenre) {
+        this.gameGenre = gameGenre;
     }
 }

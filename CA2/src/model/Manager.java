@@ -7,20 +7,25 @@ package model;
 
 import java.sql.Date;
 import java.util.Calendar;
-
+import javax.persistence.*;
 /**
  *
  * @author x00149335
  */
 import java.util.Calendar;
 
-public class Manager extends Employee {
+@Entity
+@Table(name = "MANAGER")
 
+@SequenceGenerator(name="mid_seq", initialValue=1, allocationSize=1)
+@SuppressWarnings("SerializableClass")
+public class Manager extends Employee {
+    
+    private String mID;
+    
     public Manager(String name, Date dob, Date sdate) {
         super(name, dob, sdate);
     }
-
-    private String mID;
     
     public Manager(){
         

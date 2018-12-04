@@ -53,7 +53,6 @@ public class PersistanceOperations {
         }
         em.getTransaction().commit();
     }*/
-
     public void addEmployee(String name) {
         em.getTransaction().begin();
         Employee e = new Employee();
@@ -61,29 +60,29 @@ public class PersistanceOperations {
         em.persist(e);
         em.getTransaction().commit();
     }
-    
-    public void updateEmployee(String name) {
-        Employee e = em.find(Employee.class, name);
-        em.getTransaction().begin();
-        
-        
-    }
-    
-    public void addGame(String gameName, String gameDeveloper) {
+
+//    public void updateEmployee(String name) {
+//        Employee e = em.find(Employee.class, name);
+//        em.getTransaction().begin();
+//        e.getName();
+//    }
+
+    public void addGame(String gameName, String gameGenre) {
         em.getTransaction().begin();
         Game g = new Game();
         g.setGameName(gameName);
-        g.setGameDeveloper(gameDeveloper);
+        g.setGameGenre(gameGenre);
         em.persist(g);
         em.getTransaction().commit();
     }
-    
+
     public void removeGame(String gameName, String gameDeveloper) {
         Game g = em.find(Game.class, gameName);
         em.getTransaction().begin();
         em.remove(g);
         em.getTransaction().commit();
     }
+
     public void showAllGames() {
         em.getTransaction().begin();
 
@@ -92,7 +91,7 @@ public class PersistanceOperations {
                         Game.class);
         List<Game> results = query.getResultList();
         for (Game g : results) {
-            System.out.println(String.format("%s: %s", g.getGameName(), g.getGameDeveloper()));
+            System.out.println(String.format("%s: %s", g.getGameName(), g.getGameGenre()));
         }
         em.getTransaction().commit();
     }
@@ -105,12 +104,20 @@ public class PersistanceOperations {
         em.getTransaction().commit();
     }
 
-    public void deleteEmployee(int empid) {
+    public void removeManager(String mID) {
+        Manager m = em.find(Manager.class, mID);
+        em.getTransaction().begin();
+        em.remove(m);
+        em.getTransaction().commit();
+    }
+    
+    public void removeEmployee(int empid) {
         Employee e = em.find(Employee.class, empid);
         em.getTransaction().begin();
         em.remove(e);
         em.getTransaction().commit();
     }
+
     public void close() {
         em.close();
         emf.close();

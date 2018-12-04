@@ -21,8 +21,8 @@ public class EmployeeOperations {
         try {
             OracleDataSource ods = new OracleDataSource();
             boolean inCollege = true;
-            
-            if(inCollege) {
+
+            if (inCollege) {
                 ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
                 ods.setUser("x00149335");
                 ods.setPassword("db01Nov99");
@@ -50,7 +50,29 @@ public class EmployeeOperations {
 
         }
     }
-    
+
+    public void dropDeveloperSequence() {
+        try {
+            String s4 = "drop sequence did_seq";
+            pstmt = conn.prepareStatement(s4);
+            pstmt.executeUpdate();
+            System.out.println("Developer Sequence dropped");
+        } catch (SQLException e) {
+            System.out.println("ERROR while dropping Developer sequence" + e.getMessage());
+        }
+    }
+
+    public void createDeveloperSequence() {
+        try {
+            String createseq4 = "create sequence did_seq increment by 1 start with 1";
+            pstmt = conn.prepareStatement(createseq4);
+            pstmt.executeUpdate();
+            System.out.println("Developer Sequence created");
+        } catch (SQLException e) {
+            System.out.println("ERROR while creating the Developer sequence " + e.getMessage());
+        }
+    }
+
     public void createGamesSequence() {
         try {
             String createseq2 = "create sequence gid_seq increment by 1 start with 1";
@@ -61,7 +83,7 @@ public class EmployeeOperations {
             System.out.print("Problem with Game Sequence " + ex.getMessage());
         }
     }
-    
+
     public void dropGamesSequence() {
         try {
             String s3 = "drop sequence gid_seq";
@@ -72,7 +94,7 @@ public class EmployeeOperations {
             System.out.println("ERROR while dropping Game sequence() method");
         }
     }
-    
+
     public void createEmployeeSequence() {
         // Creating a sequence    
         try {
@@ -96,7 +118,7 @@ public class EmployeeOperations {
             System.out.println(ex);
         }
     }
-    
+
     public void dropGamesTable() {
         System.out.println("Checking for existence of Game table");
         try {
@@ -109,6 +131,32 @@ public class EmployeeOperations {
         }
     }
     
+    public void createDeveloperTable() {
+        try {
+            String sql = "CREATE TABLE Developer (did NUMBER PRIMARY KEY "
+                    + "NOT NULL,"
+                    + "companyName VARCHAR2(35),"
+                    + "yearsActive NUMBER)";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.executeUpdate();
+        } catch (SQLException e ) {
+            System.out.println("SQL Exception creating "
+                    + "Developer table" + e.getMessage());
+        }
+    }
+    
+    public void dropDeveloperTable() {
+           System.out.println("Checking for existence of Developer table");
+        try {
+            String s4 = "DROP TABLE Developer";
+            pstmt = conn.prepareStatement(s4);
+            pstmt.executeUpdate();
+            System.out.println("Developer table dropped");
+        } catch (SQLException e) {
+            System.out.println("ERROR dropping Developer table() method "+e.getMessage());
+        }
+    }
+
     public void createEmployeetable() {
         // Create a Table           
         try {
@@ -125,13 +173,13 @@ public class EmployeeOperations {
                     + "Employee table" + ex.getMessage());
         }
     }
-    
+
     public void createGamesTable() {
         try {
-            String sql = "CREATE TABLE Games " +
-                    "(ID NUMBER PRIMARY KEY NOT NULL," +
-                    "gameName VARCHAR2(255)," +
-                    "gameDeveloper VARCHAR2(255))"; // Maybe have seperate class for this
+            String sql = "CREATE TABLE Games "
+                    + "(ID NUMBER PRIMARY KEY NOT NULL,"
+                    + "gameName VARCHAR2(255),"
+                    + "gameGenre VARCHAR2(255))"; // Maybe have seperate class for this
 
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
@@ -226,37 +274,54 @@ public class EmployeeOperations {
             pstmt.setDate(3, Date.valueOf("2018-11-22"));
             //pstmt.setString(4, "FullTimeEmployee");
             pstmt.executeUpdate();
-            
+
             System.out.println("Employee table populated");
         } catch (SQLException ex) {
             System.out.println("SQL Exception inserting values into "
                     + "Employee table" + ex.getMessage());
         }
     }
-    
+
     public void fillGamesTable() {
         try {
             // Insert data into table
             String sql = "INSERT INTO Game(ID,gameName,gameDeveloper) "
                     + "values(gid_seq.nextVal,?,?)";
             pstmt = conn.prepareStatement(sql);
-            
+
             pstmt.setString(1, "Fortnite");
-            pstmt.setString(2, "Epic Games");
+            pstmt.setString(2, "Shooter");
             pstmt.executeUpdate();
-            
+
             pstmt.setString(1, "Minecraft");
-            pstmt.setString(2, "Mojang");
+            pstmt.setString(2, "Indie");
             pstmt.executeUpdate();
-            
+
             pstmt.setString(1, "Club Penguin");
-            pstmt.setString(2, "Disney");
+            pstmt.setString(2, "Adventure");
             pstmt.executeUpdate();
-            
-            
-    } catch (SQLException e) {
+
+            pstmt.setString(1, "Call of Duty");
+            pstmt.setString(2, "Shooter");
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
             System.out.println("SQL Exception inserting values into "
                     + "Games table() method" + e.getMessage());
         }
     }
+
+//    public void fillManagerTable() {
+//        try {
+//            String sql = "INSERT INTO Manager(mID, type,"
+//                    + "values(mid_seq.nextVal,?)";
+//            pstmt = conn.prepareStatement(sql);
+//            
+//            pstmt.setString(1, );
+//            
+//        } catch (SQLException e ) {
+//            System.out.println("SQL Exception inserting values into "
+//                    + "Manager table() method " + e.getMessage());
+//        }
+//    }
 }

@@ -29,7 +29,8 @@ public class GameStoreDBTest {
         eo.dropEmployeeTable();
         eo.dropGamesSequence();
         eo.dropGamesTable();
-        
+        eo.dropDeveloperSequence();
+        eo.dropDeveloperTable();
 
         eo.createEmployeeSequence();
         eo.createEmployeetable();
@@ -37,14 +38,17 @@ public class GameStoreDBTest {
         eo.createManagerTable();
         eo.createGamesSequence();
         eo.createGamesTable();
+        eo.createDeveloperSequence();
+        eo.createDeveloperTable();
 
         eo.fillEmployeeTable();
-        
-        
-        
+        eo.fillGamesTable();
+//        eo.fillManagerTable();
+//        eo.fillDeveloperTable();
+
         PersistanceOperations po = new PersistanceOperations();
-        
-        while(run) {
+
+        while (run) {
             System.out.println("Please press 1 to add a new Employee");
             System.out.println("Please press 2 to add a new Manager");
             System.out.println("Please press 3 to remove an Employee");
@@ -74,13 +78,13 @@ public class GameStoreDBTest {
                     System.out.println("Enter the ID of the Employee you want to remove ");
                     in.nextLine();
                     int empid = in.nextInt();
-                    po.deleteEmployee(empid);
+                    po.removeEmployee(empid);
                     break;
                 case 4:
                     System.out.println("Enter the name of the Manager you want to remove ");
                     in.nextLine();
                     String mID = in.nextLine();
-//                  po.removeManager(mID);
+                    po.removeManager(mID);
                     break;
                 case 5:
                     po.showAllEmployees();
@@ -92,16 +96,16 @@ public class GameStoreDBTest {
                     System.out.println("Please enter the name of the game you would like to add ");
                     in.nextLine();
                     String gameName = in.nextLine();
-                    
-                    System.out.println("Please enter the name of the Game Developer for the game that you add ");
+
+                    System.out.println("Please enter the name of the Game Genre for the game that you added ");
                     in.nextLine();
-                    String gameDeveloper = in.nextLine();
-                    po.addGame(gameName, gameDeveloper);
+                    String gameGenre = in.nextLine();
+                    po.addGame(gameName, gameGenre);
                     break;
                 case 8:
                     System.out.println("Please enter the name of the game you would like to remove ");
                     in.nextLine();
-                    
+
                 case 9:
                     po.close();
                     run = false;
