@@ -36,7 +36,7 @@ public class PersistanceOperations {
                         Employee.class);
         List<Employee> results = query.getResultList();
         for (Employee e : results) {
-            System.out.println(e.getName());
+            System.out.println(String.format("%d: %s", e.getId(), e.getName()));
         }
         em.getTransaction().commit();
     }
@@ -57,7 +57,7 @@ public class PersistanceOperations {
         em.getTransaction().begin();
         Employee e = new Employee();
         e.setName(name);
-//        em.persist(e);
+        em.persist(e);
         em.getTransaction().commit();
     }
 
@@ -69,13 +69,12 @@ public class PersistanceOperations {
         em.getTransaction().commit();
     }
 
-//     public void deleteEmployee(int empid) {
-//        Employee e = em.find(Employee.class, empid);
-//        em.getTransaction().begin();
-//        em.remove(e);
-//        e.remove();
-//        em.getTransaction().commit();
-//    }
+    public void deleteEmployee(int empid) {
+        Employee e = em.find(Employee.class, empid);
+        em.getTransaction().begin();
+        em.remove(e);
+        em.getTransaction().commit();
+    }
     public void close() {
         em.close();
         emf.close();

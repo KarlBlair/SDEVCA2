@@ -75,6 +75,18 @@ public class EmployeeOperations {
             System.out.println(ex);
         }
     }
+    
+    public void dropGameTable() {
+        System.out.println("Checking for existence of Game table");
+        try {
+            String s1 = "DROP TABLE Game";
+            pstmt = conn.prepareStatement(s1);
+            pstmt.executeUpdate();
+            System.out.println("Game table dropped");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
 
     public void createEmployeetable() {
         // Create a Table           
