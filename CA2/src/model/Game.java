@@ -11,15 +11,24 @@ package model;
  */
 import javax.persistence.*;
 import java.util.Date;
+
+@Entity
+@Table(name = "GAME")
+
+@SequenceGenerator(name="gid_seq", initialValue=1, allocationSize=1)
+@SuppressWarnings("SerializableClass")
 public class Game {
     
-    private int gameID;
+    
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="gid_seq")
+    @Column(name="ID")
+    private int ID;
     private String gameName, gameDeveloper;
-    private String releaseDate;
+//    private String releaseDate;
     // add a date
     
-    public Game(int gameID, String gameName, String gameDeveloper) {
-        this.gameID = gameID;
+    public Game(String gameName, String gameDeveloper) {
         this.gameName = gameName;
         this.gameDeveloper = gameDeveloper;
     }
@@ -29,11 +38,11 @@ public class Game {
     }
 
     public int getGameID() {
-        return gameID;
+        return ID;
     }
 
     public void setGameID(int gameID) {
-        this.gameID = gameID;
+        this.ID = gameID;
     }
 
     public String getGameName() {

@@ -129,10 +129,9 @@ public class EmployeeOperations {
     public void createGamesTable() {
         try {
             String sql = "CREATE TABLE Games " +
-                    "(gameid NUMBER PRIMARY KEY NOT NULL," +
+                    "(ID NUMBER PRIMARY KEY NOT NULL," +
                     "gameName VARCHAR2(255)," +
                     "gameDeveloper VARCHAR2(255))"; // Maybe have seperate class for this
-//                    "releaseDate DATE)";
 
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
@@ -238,8 +237,8 @@ public class EmployeeOperations {
     public void fillGamesTable() {
         try {
             // Insert data into table
-            String sql = "INSERT INTO Games(id,gameName,gameDeveloper) "
-                    + "values(sid_seq.nextVal,?,?)";
+            String sql = "INSERT INTO Game(ID,gameName,gameDeveloper) "
+                    + "values(gid_seq.nextVal,?,?)";
             pstmt = conn.prepareStatement(sql);
             
             pstmt.setString(1, "Fortnite");

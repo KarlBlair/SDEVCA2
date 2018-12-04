@@ -34,9 +34,8 @@ public class Employee {
     public Employee() {
     }
     
-    public Employee(String name, int id, Date dob, Date sdate){
+    public Employee(String name, Date dob, Date sdate){
         this.name = name;
-        this.id = id;
         this.dob = dob;
         this.sdate = sdate;
     }
@@ -45,6 +44,10 @@ public class Employee {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getName() {
         return name;
     }
@@ -56,11 +59,7 @@ public class Employee {
     public Date getSdate() {
         return sdate;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    
     public void setName(String name) {
         this.name = name;
     }

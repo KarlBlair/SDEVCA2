@@ -52,7 +52,7 @@ public class GameStoreDBTest {
             System.out.println("Please press 5 to view all Employees");
             System.out.println("Please press 6 to view all Games on Record");
             System.out.println("add game");
-            System.out.println("Please press 6 to exit");
+            System.out.println("Please press 8 to exit");
 
             int choice = in.nextInt();
 

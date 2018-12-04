@@ -16,8 +16,8 @@ import java.util.Calendar;
 
 public class Manager extends Employee {
 
-    public Manager(String name, int id, Date dob, Date sdate) {
-        super(name, id, dob, sdate);
+    public Manager(String name, Date dob, Date sdate) {
+        super(name, dob, sdate);
     }
 
     private String mID;
