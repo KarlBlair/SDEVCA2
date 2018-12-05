@@ -13,6 +13,7 @@ import javax.persistence.*;
 //import java.sql.*;
 //import java.util.Calendar;
 import java.util.List;
+import model.Developer;
 import model.Employee;
 import model.Game;
 import model.Manager;
@@ -117,6 +118,30 @@ public class PersistanceOperations {
         em.remove(e);
         em.getTransaction().commit();
     }
+    
+    public void addDeveloper(String did, String devName, String companyName, int yearsActive){
+        em.getTransaction().begin();
+        Developer d = new Developer();
+        d.getDevID();
+        d.getCompanyName();
+        d.getRole();
+        d.getYearsActive();
+        em.persist(d);
+        em.getTransaction().commit();
+    }
+    
+    public void removeDeveloper(String did) {
+        Developer d = em.find(Developer.class, did);
+        em.getTransaction().begin();
+        em.remove(d);
+        em.getTransaction().begin();
+    }
+    
+//    public void changeDeveloperCompany(String did) {
+//        Developer d = em.find(Developer.class ,did);
+//        em.getTransaction().begin();
+//        d.getCompanyName();
+//    }
 
     public void close() {
         em.close();

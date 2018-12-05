@@ -44,7 +44,7 @@ public class GameStoreDBTest {
         eo.fillEmployeeTable();
         eo.fillGamesTable();
 //        eo.fillManagerTable();
-//        eo.fillDeveloperTable();
+        eo.fillDeveloperTable();
 
         PersistanceOperations po = new PersistanceOperations();
 
@@ -55,9 +55,9 @@ public class GameStoreDBTest {
             System.out.println("Please press 4 to remove a Manager");
             System.out.println("Please press 5 to view all Employees");
             System.out.println("Please press 6 to view all Games on Record");
-            System.out.println("add game");
-            System.out.println("remove game");
-            System.out.println("Please press 8 to exit");
+            System.out.println("Please press 7 to add a new game");
+            System.out.println("Please press 8 to remove a game");
+            System.out.println("Please press 9 to exit");
 
             int choice = in.nextInt();
 
@@ -105,8 +105,20 @@ public class GameStoreDBTest {
                 case 8:
                     System.out.println("Please enter the name of the game you would like to remove ");
                     in.nextLine();
-
+                    gameName = in.nextLine();
+                    gameGenre = in.nextLine();
+                    po.removeGame(gameName, gameGenre);
+                    break;
                 case 9:
+                    System.out.println("Please enter the name of the Developer you want to add ");
+                    devName = in.nextLine();
+                    System.out.println("Please enter the Company your developer works for ");
+                    companyName = in.nextLine();
+                    System.out.println("Please enter the ID of the develope you are adding ");
+                    mID = in.nextLine();
+                    po.addDeveloper(mID,devName, companyName, yearsActive);
+                    break;
+                case 12:
                     po.close();
                     run = false;
                     break;

@@ -98,7 +98,7 @@ public class EmployeeOperations {
     public void createEmployeeSequence() {
         // Creating a sequence    
         try {
-            String createseq1 = "create sequence eid_seq increment by 1 start with 0";
+            String createseq1 = "create sequence eid_seq increment by 1 start with 1";
             pstmt = conn.prepareStatement(createseq1);
             pstmt.executeUpdate();
             System.out.println("Employee Sequence created");
@@ -136,6 +136,7 @@ public class EmployeeOperations {
             String sql = "CREATE TABLE Developer (did NUMBER PRIMARY KEY "
                     + "NOT NULL,"
                     + "companyName VARCHAR2(35),"
+                    + "role VARCHAR2(25),"
                     + "yearsActive NUMBER)";
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
@@ -285,7 +286,7 @@ public class EmployeeOperations {
     public void fillGamesTable() {
         try {
             // Insert data into table
-            String sql = "INSERT INTO Game(ID,gameName,gameDeveloper) "
+            String sql = "INSERT INTO Games(ID,gameName,gameGenre) "
                     + "values(gid_seq.nextVal,?,?)";
             pstmt = conn.prepareStatement(sql);
 
@@ -311,6 +312,7 @@ public class EmployeeOperations {
         }
     }
 
+    //this is commented so that we can change the manager clas and make it somewhat useful.
 //    public void fillManagerTable() {
 //        try {
 //            String sql = "INSERT INTO Manager(mID, type,"
@@ -324,4 +326,45 @@ public class EmployeeOperations {
 //                    + "Manager table() method " + e.getMessage());
 //        }
 //    }
+    
+    public void fillDeveloperTable() {
+        try {
+            String sql = "INSERT INTO Developer(did,companyName,yearsActive, role, devName)"
+                    + "values(did_seq.nextVal,?,?,?,?)";
+            pstmt = conn.prepareStatement(sql);
+            
+            pstmt.setString(1, "Nintendo");
+            pstmt.setString(2, "14");
+            pstmt.setString(3, "Software Engineer");
+            pstmt.setString(4, "Jimmy");
+            pstmt.executeUpdate();
+            
+            pstmt.setString(1, "Epic Games");
+            pstmt.setString(2, "4");
+            pstmt.setString(3, "Database Technician");
+            pstmt.setString(4, "John");
+            pstmt.executeUpdate();
+            
+            pstmt.setString(1, "Rockstar");
+            pstmt.setString(2, "6");
+            pstmt.setString(3, "Animator");
+            pstmt.setString(4, "Same");
+            pstmt.executeUpdate();
+            
+            pstmt.setString(1, "Ubisoft");
+            pstmt.setString(2, "9");
+            pstmt.setString(3, "Lead Programmer");
+            pstmt.setString(4, "Joe");
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Blizzard Entertainment");
+            pstmt.setString(2, "3");
+            pstmt.setString(3, "Level Designer");
+            pstmt.setString(4, "Paul");
+            pstmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println("ERROR while filling the Developer table() method " + e.getMessage());
+        }
+    }
 }
