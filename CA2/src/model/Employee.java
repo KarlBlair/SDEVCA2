@@ -33,13 +33,14 @@ public class Employee {
 
     public Employee() {
     }
-    
-    public Employee(String name, Date dob, Date sdate){
+
+    public Employee(int id, String name, Date dob, Date sdate) {
+        this.id = id;
         this.name = name;
         this.dob = dob;
         this.sdate = sdate;
     }
-
+    
     public int getId() {
         return id;
     }

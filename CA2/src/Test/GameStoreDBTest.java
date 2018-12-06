@@ -24,27 +24,36 @@ public class GameStoreDBTest {
         //Had to drop the Manager table first before dropping Employee as Manager is dependant on Employee. 
         eo.openDB();
         eo.dropEmployeeSequence();
+        eo.dropDeveloperSequence();
         eo.dropManagerSequence();
+        eo.dropGamesSequence();
+        System.out.println("");
+        
+        eo.createEmployeeSequence();
+        eo.createDeveloperSequence();
+        eo.createManagerSequence();
+        eo.createGamesSequence();
+        System.out.println("");
+        
+        eo.dropGamesTable();
+        eo.dropDeveloperTable();
         eo.dropManagerTable();
         eo.dropEmployeeTable();
-        eo.dropGamesSequence();
-        eo.dropGamesTable();
-        eo.dropDeveloperSequence();
-        eo.dropDeveloperTable();
-
-        eo.createEmployeeSequence();
+        System.out.println("");
+        
         eo.createEmployeetable();
-        eo.createManagerSequence();
-        eo.createManagerTable();
-        eo.createGamesSequence();
-        eo.createGamesTable();
-        eo.createDeveloperSequence();
         eo.createDeveloperTable();
+        eo.createManagerTable();
+        eo.createGamesTable();
+        System.out.println("");
 
         eo.fillEmployeeTable();
-        eo.fillGamesTable();
-//        eo.fillManagerTable();
         eo.fillDeveloperTable();
+//        eo.fillManagerTable();
+        eo.fillGamesTable();
+        System.out.println("");
+        
+        
 
         PersistanceOperations po = new PersistanceOperations();
 
@@ -109,15 +118,15 @@ public class GameStoreDBTest {
                     gameGenre = in.nextLine();
                     po.removeGame(gameName, gameGenre);
                     break;
-                case 9:
-                    System.out.println("Please enter the name of the Developer you want to add ");
-                    devName = in.nextLine();
-                    System.out.println("Please enter the Company your developer works for ");
-                    companyName = in.nextLine();
-                    System.out.println("Please enter the ID of the develope you are adding ");
-                    mID = in.nextLine();
-                    po.addDeveloper(mID,devName, companyName, yearsActive);
-                    break;
+//                case 9:
+//                    System.out.println("Please enter the name of the Developer you want to add ");
+//                    devName = in.nextLine();
+//                    System.out.println("Please enter the Company your developer works for ");
+//                    companyName = in.nextLine();
+//                    System.out.println("Please enter the ID of the develope you are adding ");
+//                    mID = in.nextLine();
+//                    po.addDeveloper(mID,devName, companyName, yearsActive);
+//                    break;
                 case 12:
                     po.close();
                     run = false;

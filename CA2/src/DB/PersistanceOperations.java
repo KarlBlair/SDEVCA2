@@ -43,6 +43,8 @@ public class PersistanceOperations {
         em.getTransaction().commit();
     }
 
+    //this was removed as we didnt think it made much sense.
+    
     /*public void showALLFT() {
         em.getTransaction().begin();
         TypedQuery<FullTimeEmployee> query
@@ -54,6 +56,8 @@ public class PersistanceOperations {
         }
         em.getTransaction().commit();
     }*/
+    
+    
     public void addEmployee(String name) {
         em.getTransaction().begin();
         Employee e = new Employee();
@@ -136,6 +140,8 @@ public class PersistanceOperations {
         em.remove(d);
         em.getTransaction().begin();
     }
+    
+    //Dont try implement this, doesnt make senes to have this as an option.
     
 //    public void changeDeveloperCompany(String did) {
 //        Developer d = em.find(Developer.class ,did);

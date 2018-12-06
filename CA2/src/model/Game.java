@@ -25,26 +25,21 @@ public class Game {
     @Column(name="ID")
     private int ID;
     private String gameName, gameGenre;
-//    private String releaseDate;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date releaseDate;
     // add a date
-    
-    public Game(String gameName, String gameGenre) {
+
+    public Game(int ID, String gameName, String gameGenre, Date releaseDate) {
+        this.ID = ID;
         this.gameName = gameName;
         this.gameGenre = gameGenre;
+        this.releaseDate = releaseDate;
     }
-
+    
     public Game() {
         
     }
-
-    public int getGameID() {
-        return ID;
-    }
-
-    public void setGameID(int gameID) {
-        this.ID = gameID;
-    }
-
+    
     public String getGameName() {
         return gameName;
     }
@@ -60,4 +55,22 @@ public class Game {
     public void setGameGenre(String gameGenre) {
         this.gameGenre = gameGenre;
     }
+
+    public int getID() {
+        return ID;
+    }
+    
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+    
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+    
+    
 }

@@ -47,7 +47,7 @@ public class EmployeeOperations {
             pstmt.executeUpdate();
             System.out.println("Employee Sequence dropped");
         } catch (SQLException ex) {
-
+            System.out.println("ERROR while dropping Employee Sequence" + ex.getMessage());
         }
     }
 
@@ -137,7 +137,8 @@ public class EmployeeOperations {
                     + "NOT NULL,"
                     + "companyName VARCHAR2(35),"
                     + "role VARCHAR2(25),"
-                    + "yearsActive NUMBER)";
+                    + "yearsActive NUMBER,"
+                    + "devName VARCHAR2(35))";
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
         } catch (SQLException e ) {
@@ -180,8 +181,8 @@ public class EmployeeOperations {
             String sql = "CREATE TABLE Games "
                     + "(ID NUMBER PRIMARY KEY NOT NULL,"
                     + "gameName VARCHAR2(255),"
-                    + "gameGenre VARCHAR2(255))"; // Maybe have seperate class for this
-
+                    + "gameGenre VARCHAR2(255),"
+                    + "releaseDate DATE)"; // Maybe have seperate class for this
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
         } catch (SQLException ex) {
@@ -242,7 +243,7 @@ public class EmployeeOperations {
     public void fillEmployeeTable() {
         try {
             // Insert data into table
-            String sql = "INSERT INTO Employee(id,name,dob,sdate) "
+            String sql = "INSERT INTO Employee(id,name,dob,sdate)"
                     + "values(sid_seq.nextVal,?,?,?)";
             pstmt = conn.prepareStatement(sql);
 
@@ -276,6 +277,8 @@ public class EmployeeOperations {
             //pstmt.setString(4, "FullTimeEmployee");
             pstmt.executeUpdate();
 
+            
+//            System.out.println("it is working");
             System.out.println("Employee table populated");
         } catch (SQLException ex) {
             System.out.println("SQL Exception inserting values into "
@@ -286,25 +289,30 @@ public class EmployeeOperations {
     public void fillGamesTable() {
         try {
             // Insert data into table
-            String sql = "INSERT INTO Games(ID,gameName,gameGenre) "
-                    + "values(gid_seq.nextVal,?,?)";
+            String sql = "INSERT INTO Games(ID,gameName,gameGenre,releaseDate) "
+                    + "values(gid_seq.nextVal,?,?,?)";
             pstmt = conn.prepareStatement(sql);
 
             pstmt.setString(1, "Fortnite");
             pstmt.setString(2, "Shooter");
+            pstmt.setDate(3, Date.valueOf("2018-11-01"));
             pstmt.executeUpdate();
-
+            
             pstmt.setString(1, "Minecraft");
             pstmt.setString(2, "Indie");
+            pstmt.setDate(3, Date.valueOf("2009-07-23"));
             pstmt.executeUpdate();
 
             pstmt.setString(1, "Club Penguin");
             pstmt.setString(2, "Adventure");
+            pstmt.setDate(3, Date.valueOf("2007-11-16"));
             pstmt.executeUpdate();
 
             pstmt.setString(1, "Call of Duty");
             pstmt.setString(2, "Shooter");
+            pstmt.setDate(3, Date.valueOf("2018-10-13"));
             pstmt.executeUpdate();
+            
 
         } catch (SQLException e) {
             System.out.println("SQL Exception inserting values into "

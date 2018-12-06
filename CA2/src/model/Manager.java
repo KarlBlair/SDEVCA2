@@ -21,26 +21,22 @@ import java.util.Calendar;
 @SuppressWarnings("SerializableClass")
 public class Manager extends Employee {
     
-    private String mID;
-    
-    public Manager(String name, Date dob, Date sdate) {
-        super(name, dob, sdate);
-    }
-    
-    public Manager(){
-        
+   private String mID;
+
+    public Manager(String mID, int id, String name, Date dob, Date sdate) {
+        super(id, name, dob, sdate);
+        this.mID = mID;
     }
 
-    public Manager(String mID) {
-        this.mID = mID;
+    public Manager() {
+    }
+    
+    public String getmID() {
+        return mID;
     }
 
     public void setmID(String mID) {
         this.mID = mID;
     }
-
-    public String getmID() {
-        return mID;
-    }
-
+    
 }

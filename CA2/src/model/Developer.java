@@ -28,13 +28,14 @@ public class Developer {
     private String role;
     private int yearsActive;
 
-    public Developer(String companyName, int yearsActive, String role,String devName) {
-        this.companyName = companyName;
-        this.yearsActive = yearsActive;
-        this.role = role;
+    public Developer(String devName, String devID, String companyName, String role, int yearsActive) {
         this.devName = devName;
+        this.devID = devID;
+        this.companyName = companyName;
+        this.role = role;
+        this.yearsActive = yearsActive;
     }
-
+    
     public void setDevName(String devName) {
         this.devName = devName;
     }
