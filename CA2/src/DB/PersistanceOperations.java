@@ -38,8 +38,10 @@ public class PersistanceOperations {
                 = em.createQuery("SELECT e FROM Employee e",
                         Employee.class);
         List<Employee> results = query.getResultList();
+        System.out.printf("%-5s%-15s%-20s%-10s%n", "ID", "Name", "Date Of Birth", "Start Date");
+        
         for (Employee e : results) {
-            System.out.println(String.format("%d: %s", e.getId(), e.getName()));
+            System.out.printf(String.format("%-5d%-15s%-20s%-30s%n", e.getId(), e.getName(), e.getDob(), e.getSdate()));
         }
         em.getTransaction().commit();
     }
@@ -51,9 +53,14 @@ public class PersistanceOperations {
                 = em.createQuery("SELECT o FROM Orders o",
                         Orders.class);
         List<Orders> results = query.getResultList();
+        
+        System.out.printf("%-5s%-15s%-12s%-10s%n", "ID", "Order Number", "Quantity", "Order Date");
+        
         for (Orders o : results) {
-            System.out.println(o);
+            System.out.printf("%-5s%-15s%-12s%-10s%n", o.getID(), o.getOrderNum(), o.getQuantity(), o.getOrderDate());
         }
+        
+        em.getTransaction().commit();
     }
 
     //this was removed as we didnt think it made much sense.
@@ -75,8 +82,9 @@ public class PersistanceOperations {
                 = em.createQuery("SELECT d FROM Developer d",
                         Developer.class);
         List<Developer> results = query.getResultList();
+        System.out.printf("%-5s%-25s%-10s%n", "ID", "Name", "Years");
         for (Developer d : results) {
-            System.out.println(String.format("%s %d: %s", d.getCompanyName(), d.getYearsActive(), d.getDevID()));
+            System.out.println(String.format("%-5d%-25s%-10d", d.getDevID(), d.getCompanyName(), d.getYearsActive()));
         }
         em.getTransaction().commit();
     }
@@ -112,8 +120,10 @@ public class PersistanceOperations {
                 = em.createQuery("SELECT g FROM Game g",
                         Game.class);
         List<Game> results = query.getResultList();
+        System.out.printf("%-5s%-15s%-15s%-10s%-30s%n", "ID", "Game Name", "Genre", "Price", "Released");
+        
         for (Game g : results) {
-            System.out.println(String.format("%d: %s: %s", g.getID(), g.getGameName(), g.getGameGenre()));
+            System.out.println(String.format("%-5d%-15s%-15s€%-9.2f%-30s", g.getID(), g.getGameName(), g.getGameGenre(), g.getPrice(), g.getReleaseDate()));
         }
         em.getTransaction().commit();
     }

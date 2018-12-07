@@ -7,7 +7,7 @@ package Test;
  */
 /**
  *
- * @author x00149335
+ * @author x00149335, x00149095
  */
 import DB.EmployeeOperations;
 import DB.PersistanceOperations;
@@ -56,8 +56,6 @@ public class GameStoreDBTest {
         eo.fillGamesTable();
         eo.fillOrderTable();
 
-        System.out.println("zz4");
-
         PersistanceOperations po = new PersistanceOperations();
         outputCommands();
         
@@ -77,10 +75,10 @@ public class GameStoreDBTest {
                     int empid = in.nextInt();
                     po.removeEmployee(empid);
                     break;
-                case 10:
+                case 9:
                     po.showAllEmployees();
                     break;
-                case 11:
+                case 10:
                     po.showAllGames();
                     break;
                 case 2:
@@ -96,7 +94,7 @@ public class GameStoreDBTest {
                     int gameID = in.nextInt();
                     po.removeGame(gameID);
                     break;
-                case 12:
+                case 11:
                     po.showAllDevelopers();
                     break;
                 case 3:
@@ -112,7 +110,7 @@ public class GameStoreDBTest {
                     int devID = in.nextInt();
                     po.removeDeveloper(devID);
                     break;
-                case 9:
+                case 8:
                     System.out.print("Please enter the ID of the Developer you want to update: ");
                     int ID = in.nextInt();
                     in.nextLine();
@@ -123,27 +121,26 @@ public class GameStoreDBTest {
                     
                     po.updateDeveloper(ID, newName, newYears);
                 break;
-                case 13:
+                case 12:
                     po.showAllOrders();
                     break;
-                case 14:
+                case 13:
                     po.close();
                     run = false;
                     break;
-                case 7:
-//                    po.up
-                case 15:
+                case 14:
                     outputCommands();
                     break;
-                case 8:
-                    System.out.println("Please enter the ID of the game that you want to update");
+                case 7:
+                    System.out.print("Please enter the ID of the game that you want to update: ");
                     ID = in.nextInt();
-                    System.out.println("Please enter the name of the game that you want to be updated");
+                    System.out.print("Please enter the name of the game that you want to be updated: ");
+                    in.nextLine(); // weird
                     gameName = in.nextLine();
-                    System.out.println("Please enter the genre of the game that you have updated");
+                    System.out.print("Please enter the genre of the game that you have updated: ");
                     gameGenre = in.nextLine();
-                    System.out.println("Please enter the Price of the game that you want to update");
-                    double price = in.nextInt();
+                    System.out.print("Please enter the Price of the game that you want to update: ");
+                    double price = in.nextDouble();
                     po.updateGame(ID, price,gameName,gameGenre);
                     break;
                 default:
@@ -165,19 +162,18 @@ public class GameStoreDBTest {
         System.out.println("6] Remove a Developer");
 
         System.out.println("\nUpdate Options:");
-        System.out.println("7] Update an Employee");
-        System.out.println("8] Update a Game");
-        System.out.println("9] Update a Developer");
+        System.out.println("7] Update a Game");
+        System.out.println("8] Update a Developer");
 
         System.out.println("\nView Options:");
-        System.out.println("10] View all Employees");
-        System.out.println("11] View all Games on Record");
-        System.out.println("12] View all available Developers");
-        System.out.println("13] View all Orders");
+        System.out.println("9] View all Employees");
+        System.out.println("10] View all Games on Record");
+        System.out.println("11] View all available Developers");
+        System.out.println("12] View all Orders");
 
         System.out.println("\nMisc:");
-        System.out.println("14] Exit the program");
-        System.out.println("15] Output this command list again");
+        System.out.println("13] Exit the program");
+        System.out.println("14] Output this command list again");
         System.out.println("=======================================\n");
     }
 }

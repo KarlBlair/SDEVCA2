@@ -432,7 +432,6 @@ public class EmployeeOperations {
     }
     
     public void fillOrderTable() {
-        System.out.println("IS THIS WORKING");
         try {
             String sql = "INSERT INTO Orders(ID,orderNum,quantity,orderDate)"
                     + "values(oid_seq.nextVal,?,?,?)";
@@ -447,8 +446,6 @@ public class EmployeeOperations {
             pstmt.setInt(2, 25);
             pstmt.setDate(3, Date.valueOf("2007-06-21"));
             pstmt.executeUpdate();
-            
-            System.out.println("THIS IS WORKING");
             
     } catch (SQLException e ) {
             System.out.println("ERROR while filling the order Table()"+e.getMessage());
