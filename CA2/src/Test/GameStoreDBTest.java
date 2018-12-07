@@ -129,7 +129,12 @@ public class GameStoreDBTest {
                     int devID = in.nextInt();
                     po.removeDeveloper(devID);
                 break;
-                case 12:
+//                case 12:
+//                    System.out.println("Enter the ID of the Developer you want to change ");
+//                    int devID = in.nextInt();
+//                    System.out.println("");
+//                    po.updateDeveloper(devID, yearsActive);
+                case 16:
                     po.close();
                     run = false;
                     break;

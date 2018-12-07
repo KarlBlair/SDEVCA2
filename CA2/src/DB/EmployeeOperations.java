@@ -20,18 +20,19 @@ public class EmployeeOperations {
     public Connection openDB() {
         try {
             OracleDataSource ods = new OracleDataSource();
-            boolean inCollege = true;
 
-            if (inCollege) {
-                ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
-                ods.setUser("x00149335");
-                ods.setPassword("db01Nov99");
-            } else {
-                ods.setURL("jdbc:oracle:thin:@//192.168.0.8:1521/xe");
-                ods.setUser("SYSTEM");
-                ods.setPassword("w34r3numb3r3500");
-            }
+            ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
+            ods.setUser("x00149335");
+            ods.setPassword("db01Nov99");
 
+//            ods.setURL("jdbc:oracle:thin:@//192.168.0.8:1521/xe");
+//            ods.setUser("SYSTEM");
+//            ods.setPassword("w34r3numb3r3500");
+
+//            ods.setURL("jdbc:oracle:thin:HR/pmagee@localhost:1521:XE");
+//            ods.setUser("hr");
+//            ods.setPassword("passhr");
+            
             conn = ods.getConnection();
             System.out.println("connected.");
         } catch (SQLException e) {
@@ -130,7 +131,7 @@ public class EmployeeOperations {
             System.out.println(ex);
         }
     }
-    
+
     public void createDeveloperTable() {
         try {
             String sql = "CREATE TABLE Developer (ID NUMBER PRIMARY KEY "
@@ -139,21 +140,21 @@ public class EmployeeOperations {
                     + "yearsActive NUMBER)";
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
-        } catch (SQLException e ) {
+        } catch (SQLException e) {
             System.out.println("SQL Exception creating "
                     + "Developer table" + e.getMessage());
         }
     }
-    
+
     public void dropDeveloperTable() {
-           System.out.println("Checking for existence of Developer table");
+        System.out.println("Checking for existence of Developer table");
         try {
             String s4 = "DROP TABLE Developer";
             pstmt = conn.prepareStatement(s4);
             pstmt.executeUpdate();
             System.out.println("Developer table dropped");
         } catch (SQLException e) {
-            System.out.println("ERROR dropping Developer table() method "+e.getMessage());
+            System.out.println("ERROR dropping Developer table() method " + e.getMessage());
         }
     }
 
@@ -275,7 +276,6 @@ public class EmployeeOperations {
             //pstmt.setString(4, "FullTimeEmployee");
             pstmt.executeUpdate();
 
-            
 //            System.out.println("it is working");
             System.out.println("Employee table populated");
         } catch (SQLException ex) {
@@ -295,7 +295,7 @@ public class EmployeeOperations {
             pstmt.setString(2, "Shooter");
             pstmt.setDate(3, Date.valueOf("2018-11-01"));
             pstmt.executeUpdate();
-            
+
             pstmt.setString(1, "Minecraft");
             pstmt.setString(2, "Indie");
             pstmt.setDate(3, Date.valueOf("2009-07-23"));
@@ -310,7 +310,6 @@ public class EmployeeOperations {
             pstmt.setString(2, "Shooter");
             pstmt.setDate(3, Date.valueOf("2018-10-13"));
             pstmt.executeUpdate();
-            
 
         } catch (SQLException e) {
             System.out.println("SQL Exception inserting values into "
@@ -332,31 +331,30 @@ public class EmployeeOperations {
 //                    + "Manager table() method " + e.getMessage());
 //        }
 //    }
-    
     public void fillDeveloperTable() {
         try {
             String sql = "INSERT INTO Developer(ID,companyName,yearsActive)"
                     + "values(did_seq.nextVal,?,?)";
             pstmt = conn.prepareStatement(sql);
-            
+
             pstmt.setString(1, "Nintendo");
             pstmt.setString(2, "14");
 //            pstmt.setString(3, "Software Engineer");
             //pstmt.setString(4, "Jimmy");
             pstmt.executeUpdate();
-            
+
             pstmt.setString(1, "Epic Games");
             pstmt.setString(2, "10");
 //            pstmt.setString(3, "Database Technician");
             //pstmt.setString(4, "John");
             pstmt.executeUpdate();
-            
+
             pstmt.setString(1, "Rockstar");
             pstmt.setString(2, "23");
 //            pstmt.setString(3, "Animator");
             //pstmt.setString(4, "Same");
             pstmt.executeUpdate();
-            
+
             pstmt.setString(1, "Ubisoft");
             pstmt.setString(2, "19");
 //            pstmt.setString(3, "Lead Programmer");
@@ -368,9 +366,9 @@ public class EmployeeOperations {
 //            pstmt.setString(3, "Level Designer");
             //pstmt.setString(4, "Paul");
             pstmt.executeUpdate();
-            
+
             System.out.println("Developer table populated");
-            
+
         } catch (SQLException e) {
             System.out.println("ERROR while filling the Developer table() method " + e.getMessage());
         }
