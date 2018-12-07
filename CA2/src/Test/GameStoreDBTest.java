@@ -83,7 +83,7 @@ public class GameStoreDBTest {
                 case 11:
                     po.showAllGames();
                     break;
-                case 8:
+                case 2:
                     System.out.print("Please enter the name of the game you would like to add: ");
                     String gameName = in.nextLine();
 
@@ -130,8 +130,21 @@ public class GameStoreDBTest {
                     po.close();
                     run = false;
                     break;
+                case 7:
+//                    po.up
                 case 15:
                     outputCommands();
+                    break;
+                case 8:
+                    System.out.println("Please enter the ID of the game that you want to update");
+                    ID = in.nextInt();
+                    System.out.println("Please enter the name of the game that you want to be updated");
+                    gameName = in.nextLine();
+                    System.out.println("Please enter the genre of the game that you have updated");
+                    gameGenre = in.nextLine();
+                    System.out.println("Please enter the Price of the game that you want to update");
+                    double price = in.nextInt();
+                    po.updateGame(ID, price,gameName,gameGenre);
                     break;
                 default:
                     System.out.printf("%d is not a valid option. Please try again!\n", choice);

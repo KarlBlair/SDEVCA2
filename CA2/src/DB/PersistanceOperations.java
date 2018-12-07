@@ -19,6 +19,7 @@ import model.Game;
 import model.Orders;
 //import model.Manager;
 //import model.PartTimeEmployee;
+
 public class PersistanceOperations {
 
     EntityManagerFactory emf;
@@ -42,15 +43,15 @@ public class PersistanceOperations {
         }
         em.getTransaction().commit();
     }
-    
+
     public void showAllOrders() {
         em.getTransaction().begin();
-        
-        TypedQuery<Orders> query 
+
+        TypedQuery<Orders> query
                 = em.createQuery("SELECT o FROM Orders o",
                         Orders.class);
         List<Orders> results = query.getResultList();
-        for(Orders o : results) {
+        for (Orders o : results) {
             System.out.println(o);
         }
     }
@@ -69,12 +70,12 @@ public class PersistanceOperations {
     }*/
     public void showAllDevelopers() {
         em.getTransaction().begin();
-        
-        TypedQuery<Developer> query 
+
+        TypedQuery<Developer> query
                 = em.createQuery("SELECT d FROM Developer d",
                         Developer.class);
         List<Developer> results = query.getResultList();
-        for(Developer d : results) {
+        for (Developer d : results) {
             System.out.println(String.format("%s %d: %s", d.getCompanyName(), d.getYearsActive(), d.getDevID()));
         }
         em.getTransaction().commit();
@@ -88,11 +89,6 @@ public class PersistanceOperations {
         em.getTransaction().commit();
     }
 
-//    public void updateEmployee(String name) {
-//        Employee e = em.find(Employee.class, name);
-//        em.getTransaction().begin();
-//        e.getName();
-//    }
     public void addGame(String gameName, String gameGenre) {
         em.getTransaction().begin();
         Game g = new Game();
@@ -137,7 +133,7 @@ public class PersistanceOperations {
         em.persist(d);
         em.getTransaction().commit();
     }
-    
+
     public void updateDeveloper(int ID, String newName, int newYears) {
         Developer d = em.find(Developer.class, ID);
         em.getTransaction().begin();
@@ -145,7 +141,17 @@ public class PersistanceOperations {
         d.setYearsActive(newYears);
         em.persist(d);
         em.getTransaction().commit();
-    
+    }
+ 
+    public void updateGame(int ID, double price, String gameName, String gameGenre) {
+        Game g = em.find(Game.class, ID);
+        em.getTransaction().begin();
+        g.setGameGenre(gameGenre);
+        g.setGameName(gameName);
+        g.setID(ID);
+        g.setPrice(price);
+        em.persist(g);
+        em.getTransaction().commit();
     }
 
     public void removeDeveloper(int id) {

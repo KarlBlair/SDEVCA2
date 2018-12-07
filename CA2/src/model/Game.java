@@ -27,17 +27,27 @@ public class Game {
     private String gameName, gameGenre;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date releaseDate;
+    private double price;
     // add a date
 
-    public Game(int ID, String gameName, String gameGenre, Date releaseDate) {
+    public Game(int ID, String gameName, String gameGenre, Date releaseDate, double price) {
         this.ID = ID;
         this.gameName = gameName;
         this.gameGenre = gameGenre;
         this.releaseDate = releaseDate;
+        this.price = price;
     }
     
     public Game() {
         
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
     
     public String getGameName() {

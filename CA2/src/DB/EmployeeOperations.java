@@ -25,10 +25,14 @@ public class EmployeeOperations {
             ods.setUser("x00149335");
             ods.setPassword("db01Nov99");
 
+            //ignore this one as it was used as homeDB for Adam.
+            
 //            ods.setURL("jdbc:oracle:thin:@//192.168.0.8:1521/xe");
 //            ods.setUser("SYSTEM");
 //            ods.setPassword("w34r3numb3r3500");
+    
 
+        
 //            ods.setURL("jdbc:oracle:thin:HR/pmagee@localhost:1521:XE");
 //            ods.setUser("hr");
 //            ods.setPassword("passhr");
@@ -229,7 +233,8 @@ public class EmployeeOperations {
                     + "(ID NUMBER PRIMARY KEY NOT NULL,"
                     + "gameName VARCHAR2(255),"
                     + "gameGenre VARCHAR2(255),"
-                    + "releaseDate DATE)"; // Maybe have seperate class for this
+                    + "releaseDate DATE,"
+                    + "price NUMBER)"; // Maybe have seperate class for this
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
         } catch (SQLException ex) {
@@ -335,28 +340,32 @@ public class EmployeeOperations {
     public void fillGamesTable() {
         try {
             // Insert data into table
-            String sql = "INSERT INTO Game(ID,gameName,gameGenre,releaseDate) "
-                    + "values(gid_seq.nextVal,?,?,?)";
+            String sql = "INSERT INTO Game(ID,gameName,gameGenre,releaseDate,price) "
+                    + "values(gid_seq.nextVal,?,?,?,?)";
             pstmt = conn.prepareStatement(sql);
 
             pstmt.setString(1, "Fortnite");
             pstmt.setString(2, "Shooter");
             pstmt.setDate(3, Date.valueOf("2018-11-01"));
+            pstmt.setInt(4, 0);
             pstmt.executeUpdate();
 
             pstmt.setString(1, "Minecraft");
             pstmt.setString(2, "Indie");
             pstmt.setDate(3, Date.valueOf("2009-07-23"));
+            pstmt.setInt(4, 20);
             pstmt.executeUpdate();
 
             pstmt.setString(1, "Club Penguin");
             pstmt.setString(2, "Adventure");
             pstmt.setDate(3, Date.valueOf("2007-11-16"));
+            pstmt.setInt(4, 10);
             pstmt.executeUpdate();
 
             pstmt.setString(1, "Call of Duty");
             pstmt.setString(2, "Shooter");
             pstmt.setDate(3, Date.valueOf("2018-10-13"));
+            pstmt.setInt(4, 60);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
