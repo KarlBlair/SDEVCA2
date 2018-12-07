@@ -20,7 +20,7 @@ public class EmployeeOperations {
     public Connection openDB() {
         try {
             OracleDataSource ods = new OracleDataSource();
-            boolean inCollege = false;
+            boolean inCollege = true;
 
             if (inCollege) {
                 ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
@@ -137,8 +137,7 @@ public class EmployeeOperations {
                     + "NOT NULL,"
                     + "companyName VARCHAR2(35),"
                     + "role VARCHAR2(25),"
-                    + "yearsActive NUMBER,"
-                    + "devName VARCHAR2(35))";
+                    + "yearsActive NUMBER)";
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
         } catch (SQLException e ) {
@@ -337,39 +336,41 @@ public class EmployeeOperations {
     
     public void fillDeveloperTable() {
         try {
-            String sql = "INSERT INTO Developer(did,companyName,yearsActive, role, devName)"
-                    + "values(did_seq.nextVal,?,?,?,?)";
+            String sql = "INSERT INTO Developer(did,companyName,yearsActive, role)"
+                    + "values(did_seq.nextVal,?,?,?)";
             pstmt = conn.prepareStatement(sql);
             
             pstmt.setString(1, "Nintendo");
             pstmt.setString(2, "14");
             pstmt.setString(3, "Software Engineer");
-            pstmt.setString(4, "Jimmy");
+            //pstmt.setString(4, "Jimmy");
             pstmt.executeUpdate();
             
             pstmt.setString(1, "Epic Games");
             pstmt.setString(2, "4");
             pstmt.setString(3, "Database Technician");
-            pstmt.setString(4, "John");
+            //pstmt.setString(4, "John");
             pstmt.executeUpdate();
             
             pstmt.setString(1, "Rockstar");
             pstmt.setString(2, "6");
             pstmt.setString(3, "Animator");
-            pstmt.setString(4, "Same");
+            //pstmt.setString(4, "Same");
             pstmt.executeUpdate();
             
             pstmt.setString(1, "Ubisoft");
             pstmt.setString(2, "9");
             pstmt.setString(3, "Lead Programmer");
-            pstmt.setString(4, "Joe");
+            //pstmt.setString(4, "Joe");
             pstmt.executeUpdate();
 
             pstmt.setString(1, "Blizzard Entertainment");
             pstmt.setString(2, "3");
             pstmt.setString(3, "Level Designer");
-            pstmt.setString(4, "Paul");
+            //pstmt.setString(4, "Paul");
             pstmt.executeUpdate();
+            
+            System.out.println("Developer table populated");
             
         } catch (SQLException e) {
             System.out.println("ERROR while filling the Developer table() method " + e.getMessage());

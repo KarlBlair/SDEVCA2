@@ -51,7 +51,7 @@ public class GameStoreDBTest {
         eo.fillDeveloperTable();
 //        eo.fillManagerTable();
         eo.fillGamesTable();
-        System.out.println("");
+        System.out.println("zz4");
         
         PersistanceOperations po = new PersistanceOperations();
 

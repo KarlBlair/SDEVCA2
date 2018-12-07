@@ -22,27 +22,27 @@ public class Developer {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="did_seq")
     @Column(name="ID")
-    private String devName;
+    //private String devName;
     private String devID;
     private String companyName;
     private String role;
     private int yearsActive;
 
-    public Developer(String devName, String devID, String companyName, String role, int yearsActive) {
-        this.devName = devName;
+    public Developer(String devID, String companyName, String role, int yearsActive) {
+        //this.devName = devName;
         this.devID = devID;
         this.companyName = companyName;
         this.role = role;
         this.yearsActive = yearsActive;
     }
     
-    public void setDevName(String devName) {
+    /*public void setDevName(String devName) {
         this.devName = devName;
-    }
+    }*/
 
-    public String getDevName() {
+    /*public String getDevName() {
         return devName;
-    }
+    }*/
 
     public String getRole() {
         return role;
