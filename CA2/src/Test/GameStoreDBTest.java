@@ -27,30 +27,35 @@ public class GameStoreDBTest {
         eo.dropDeveloperSequence();
         eo.dropManagerSequence();
         eo.dropGamesSequence();
+        eo.dropOrderSequence();
         System.out.println("");
         
         eo.createEmployeeSequence();
         eo.createDeveloperSequence();
         eo.createManagerSequence();
         eo.createGamesSequence();
+        eo.createOrderSequence();
         System.out.println("");
         
         eo.dropGamesTable();
         eo.dropDeveloperTable();
         eo.dropManagerTable();
         eo.dropEmployeeTable();
+        eo.dropOrderTable();
         System.out.println("");
         
         eo.createEmployeetable();
         eo.createDeveloperTable();
         eo.createManagerTable();
         eo.createGamesTable();
+        eo.createOrderTable();
         System.out.println("");
 
         eo.fillEmployeeTable();
         eo.fillDeveloperTable();
-//        eo.fillManagerTable();
         eo.fillGamesTable();
+        eo.fillOrderTable();
+        
         System.out.println("zz4");
         
         PersistanceOperations po = new PersistanceOperations();
@@ -67,7 +72,9 @@ public class GameStoreDBTest {
             System.out.println("Please press 9 to view all available Developers");
             System.out.println("Please press 10 to add a new developer record");
             System.out.println("Please press 11 to remove a developer record");
-            System.out.println("Please press 12 to exit");
+            System.out.println("Please press 12 to update a Developer ");
+            System.out.println("13 for orders");
+            System.out.println("Please press 16 to exit");
 
             int choice = in.nextInt();
             in.nextLine();
@@ -86,12 +93,12 @@ public class GameStoreDBTest {
                 case 3:
                     System.out.println("Enter the name of the Manger you want to add ");
                     String mName = in.nextLine();
-                    po.addManager(mName);
+//                    po.addManager(mName);
                     break;
                 case 4:
                     System.out.println("Enter the name of the Manager you want to remove ");
                     String mID = in.nextLine();
-                    po.removeManager(mID);
+//                    po.removeManager(mID);
                     break;
                 case 5:
                     po.showAllEmployees();
@@ -134,6 +141,10 @@ public class GameStoreDBTest {
 //                    int devID = in.nextInt();
 //                    System.out.println("");
 //                    po.updateDeveloper(devID, yearsActive);
+//                break;
+                case 13:
+                    System.out.println("eqeqeqeqeqeqeqeqeq");
+                    po.showAllOrders();
                 case 16:
                     po.close();
                     run = false;

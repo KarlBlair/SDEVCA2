@@ -32,7 +32,6 @@ public class EmployeeOperations {
 //            ods.setURL("jdbc:oracle:thin:HR/pmagee@localhost:1521:XE");
 //            ods.setUser("hr");
 //            ods.setPassword("passhr");
-            
             conn = ods.getConnection();
             System.out.println("connected.");
         } catch (SQLException e) {
@@ -49,6 +48,17 @@ public class EmployeeOperations {
             System.out.println("Employee Sequence dropped");
         } catch (SQLException ex) {
             System.out.println("ERROR while dropping Employee Sequence" + ex.getMessage());
+        }
+    }
+
+    public void dropOrderSequence() {
+        try {
+            String s2 = "drop sequence oid_seq";
+            pstmt = conn.prepareStatement(s2);
+            pstmt.executeUpdate();
+            System.out.println("Order Sequence dropped");
+        } catch (SQLException ex) {
+            System.out.println("ERROR while dropping Order Sequence" + ex.getMessage());
         }
     }
 
@@ -82,6 +92,17 @@ public class EmployeeOperations {
             System.out.println("Game Sequence created");
         } catch (SQLException ex) {
             System.out.print("Problem with Game Sequence " + ex.getMessage());
+        }
+    }
+
+    public void createOrderSequence() {
+        try {
+            String createseq2 = "create sequence oid_seq increment by 1 start with 1";
+            pstmt = conn.prepareStatement(createseq2);
+            pstmt.executeUpdate();
+            System.out.println("Order Sequence created");
+        } catch (SQLException ex) {
+            System.out.print("Problem with Order Sequence " + ex.getMessage());
         }
     }
 
@@ -120,6 +141,18 @@ public class EmployeeOperations {
         }
     }
 
+    public void dropOrderTable() {
+        System.out.println("Checking for existence of Order table");
+        try {
+            String s1 = "DROP TABLE Orders";
+            pstmt = conn.prepareStatement(s1);
+            pstmt.executeUpdate();
+            System.out.println("Order table dropped");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+
     public void dropGamesTable() {
         System.out.println("Checking for existence of Game table");
         try {
@@ -138,6 +171,21 @@ public class EmployeeOperations {
                     + "NOT NULL,"
                     + "companyName VARCHAR2(35),"
                     + "yearsActive NUMBER)";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("SQL Exception creating "
+                    + "Developer table" + e.getMessage());
+        }
+    }
+
+    public void createOrderTable() {
+        try {
+            String sql = "CREATE TABLE Orders (oID NUMBER PRIMARY KEY "
+                    + "NOT NULL,"
+                    + "orderNum VARCHAR2(35),"
+                    + "quantity NUMBER,"
+                    + "orderDate DATE)";
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -372,5 +420,29 @@ public class EmployeeOperations {
         } catch (SQLException e) {
             System.out.println("ERROR while filling the Developer table() method " + e.getMessage());
         }
+    }
+    
+    public void fillOrderTable() {
+        System.out.println("IS THIS WORKING");
+        try {
+            String sql = "INSERT INTO Orders(oID,orderNum,quantity,orderDate)"
+                    + "values(oid_seq.nextVal,?,?,?)";
+            pstmt = conn.prepareStatement(sql);
+            
+            pstmt.setInt(1, 12345);
+            pstmt.setInt(2, 45);
+            pstmt.setDate(3, Date.valueOf("2018-12-07"));
+            pstmt.executeUpdate();
+            
+            pstmt.setInt(1, 123);
+            pstmt.setInt(2, 25);
+            pstmt.setDate(3, Date.valueOf("2007-06-21"));
+            pstmt.executeUpdate();
+            
+            System.out.println("THIS IS WORKING");
+            
+    } catch (SQLException e ) {
+            System.out.println("ERROR while filling the order Table()"+e.getMessage());
+    }
     }
 }

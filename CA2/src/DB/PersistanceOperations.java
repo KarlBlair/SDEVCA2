@@ -16,9 +16,9 @@ import java.util.List;
 import model.Developer;
 import model.Employee;
 import model.Game;
-import model.Manager;
+import model.Orders;
+//import model.Manager;
 //import model.PartTimeEmployee;
-
 public class PersistanceOperations {
 
     EntityManagerFactory emf;
@@ -41,6 +41,18 @@ public class PersistanceOperations {
             System.out.println(String.format("%d: %s", e.getId(), e.getName()));
         }
         em.getTransaction().commit();
+    }
+    
+    public void showAllOrders() {
+        em.getTransaction().begin();
+        
+        TypedQuery<Orders> query 
+                = em.createQuery("SELECT o FROM Orders o",
+                        Orders.class);
+        List<Orders> results = query.getResultList();
+        for(Orders o : results) {
+            System.out.println(o);
+        }
     }
 
     //this was removed as we didnt think it made much sense.
@@ -107,21 +119,6 @@ public class PersistanceOperations {
         for (Game g : results) {
             System.out.println(String.format("%d: %s: %s", g.getID(), g.getGameName(), g.getGameGenre()));
         }
-        em.getTransaction().commit();
-    }
-
-    public void addManager(String name) {
-        em.getTransaction().begin();
-        Manager m = new Manager();
-        m.setName(name);
-        em.persist(m);
-        em.getTransaction().commit();
-    }
-
-    public void removeManager(String mID) {
-        Manager m = em.find(Manager.class, mID);
-        em.getTransaction().begin();
-        em.remove(m);
         em.getTransaction().commit();
     }
 
