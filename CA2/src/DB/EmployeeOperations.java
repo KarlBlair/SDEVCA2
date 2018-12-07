@@ -122,7 +122,7 @@ public class EmployeeOperations {
     public void dropGamesTable() {
         System.out.println("Checking for existence of Game table");
         try {
-            String s2 = "DROP TABLE Games";
+            String s2 = "DROP TABLE Game";
             pstmt = conn.prepareStatement(s2);
             pstmt.executeUpdate();
             System.out.println("Games table dropped");
@@ -177,7 +177,7 @@ public class EmployeeOperations {
 
     public void createGamesTable() {
         try {
-            String sql = "CREATE TABLE Games "
+            String sql = "CREATE TABLE Game "
                     + "(ID NUMBER PRIMARY KEY NOT NULL,"
                     + "gameName VARCHAR2(255),"
                     + "gameGenre VARCHAR2(255),"
@@ -243,7 +243,7 @@ public class EmployeeOperations {
         try {
             // Insert data into table
             String sql = "INSERT INTO Employee(id,name,dob,sdate)"
-                    + "values(sid_seq.nextVal,?,?,?)";
+                    + "values(eid_seq.nextVal,?,?,?)";
             pstmt = conn.prepareStatement(sql);
 
             pstmt.setString(1, "Karl Blair");
@@ -288,7 +288,7 @@ public class EmployeeOperations {
     public void fillGamesTable() {
         try {
             // Insert data into table
-            String sql = "INSERT INTO Games(ID,gameName,gameGenre,releaseDate) "
+            String sql = "INSERT INTO Game(ID,gameName,gameGenre,releaseDate) "
                     + "values(gid_seq.nextVal,?,?,?)";
             pstmt = conn.prepareStatement(sql);
 
