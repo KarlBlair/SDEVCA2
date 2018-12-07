@@ -127,7 +127,8 @@ public class GameStoreDBTest {
                 case 11:
                     System.out.println("Please enter the ID of the developer you wish to remove ");
                     int devID = in.nextInt();
-                    // do this
+                    po.removeDeveloper(devID);
+                break;
                 case 12:
                     po.close();
                     run = false;

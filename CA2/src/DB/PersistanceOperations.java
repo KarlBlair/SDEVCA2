@@ -141,11 +141,11 @@ public class PersistanceOperations {
         em.getTransaction().commit();
     }
 
-    public void removeDeveloper(String did) {
-        Developer d = em.find(Developer.class, did);
+    public void removeDeveloper(int id) {
+        Developer d = em.find(Developer.class, id);
         em.getTransaction().begin();
         em.remove(d);
-        em.getTransaction().begin();
+        em.getTransaction().commit();
     }
 
     //Dont try implement this, doesnt make senes to have this as an option.
