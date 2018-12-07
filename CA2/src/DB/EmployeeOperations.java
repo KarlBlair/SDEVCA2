@@ -20,16 +20,16 @@ public class EmployeeOperations {
     public Connection openDB() {
         try {
             OracleDataSource ods = new OracleDataSource();
-            boolean inCollege = true;
+            boolean inCollege = false;
 
             if (inCollege) {
                 ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
                 ods.setUser("x00149335");
                 ods.setPassword("db01Nov99");
             } else {
-                ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
-                ods.setUser("sysdb");
-                ods.setPassword("db01Nov99");
+                ods.setURL("jdbc:oracle:thin:@//192.168.0.8:1521/xe");
+                ods.setUser("SYSTEM");
+                ods.setPassword("w34r3numb3r3500");
             }
 
             conn = ods.getConnection();
