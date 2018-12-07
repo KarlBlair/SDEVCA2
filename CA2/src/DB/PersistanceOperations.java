@@ -138,13 +138,12 @@ public class PersistanceOperations {
         em.getTransaction().commit();
     }
     
-    public void updateDeveloper(int ID, int yearsActive) {
+    public void updateDeveloper(int ID, String newName, int newYears) {
         Developer d = em.find(Developer.class, ID);
         em.getTransaction().begin();
-        d.setDevID(ID);
-        d.setYearsActive(yearsActive);
-        em.persist(ID);
-        em.persist(yearsActive);
+        d.setCompanyName(newName);
+        d.setYearsActive(newYears);
+        em.persist(d);
         em.getTransaction().commit();
     
     }

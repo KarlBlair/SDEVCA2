@@ -29,21 +29,21 @@ public class GameStoreDBTest {
         eo.dropGamesSequence();
         eo.dropOrderSequence();
         System.out.println("");
-        
+
         eo.createEmployeeSequence();
         eo.createDeveloperSequence();
         eo.createManagerSequence();
         eo.createGamesSequence();
         eo.createOrderSequence();
         System.out.println("");
-        
+
         eo.dropGamesTable();
         eo.dropDeveloperTable();
         eo.dropManagerTable();
         eo.dropEmployeeTable();
         eo.dropOrderTable();
         System.out.println("");
-        
+
         eo.createEmployeetable();
         eo.createDeveloperTable();
         eo.createManagerTable();
@@ -55,9 +55,9 @@ public class GameStoreDBTest {
         eo.fillDeveloperTable();
         eo.fillGamesTable();
         eo.fillOrderTable();
-        
+
         System.out.println("zz4");
-        
+
         PersistanceOperations po = new PersistanceOperations();
 
         while (run) {
@@ -78,7 +78,7 @@ public class GameStoreDBTest {
 
             int choice = in.nextInt();
             in.nextLine();
-            
+
             switch (choice) {
                 case 1:
                     System.out.println("Enter the name of the Employee you want to add ");
@@ -128,23 +128,28 @@ public class GameStoreDBTest {
                     String companyName = in.nextLine();
                     System.out.println("How many years has this company been in business ");
                     int yearsActive = in.nextInt();
-                    
+
                     po.addDeveloper(companyName, yearsActive);
                     break;
                 case 11:
                     System.out.println("Please enter the ID of the developer you wish to remove ");
                     int devID = in.nextInt();
                     po.removeDeveloper(devID);
+                    break;
+                case 12:
+                    System.out.println("Please enter the ID of the Developer you want to update");
+                    int ID = in.nextInt();
+                    in.nextLine();
+                    System.out.println("Please enter the new name");
+                    String newName = in.nextLine();
+                    System.out.println("Please enter the new years active");
+                    int newYears = in.nextInt();
+                    
+                    po.updateDeveloper(ID, newName, newYears);
                 break;
-//                case 12:
-//                    System.out.println("Enter the ID of the Developer you want to change ");
-//                    int devID = in.nextInt();
-//                    System.out.println("");
-//                    po.updateDeveloper(devID, yearsActive);
-//                break;
                 case 13:
-                    System.out.println("eqeqeqeqeqeqeqeqeq");
                     po.showAllOrders();
+                    break;
                 case 16:
                     po.close();
                     run = false;

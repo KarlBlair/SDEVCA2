@@ -181,7 +181,7 @@ public class EmployeeOperations {
 
     public void createOrderTable() {
         try {
-            String sql = "CREATE TABLE Orders (oID NUMBER PRIMARY KEY "
+            String sql = "CREATE TABLE Orders (ID NUMBER PRIMARY KEY "
                     + "NOT NULL,"
                     + "orderNum VARCHAR2(35),"
                     + "quantity NUMBER,"
@@ -425,7 +425,7 @@ public class EmployeeOperations {
     public void fillOrderTable() {
         System.out.println("IS THIS WORKING");
         try {
-            String sql = "INSERT INTO Orders(oID,orderNum,quantity,orderDate)"
+            String sql = "INSERT INTO Orders(ID,orderNum,quantity,orderDate)"
                     + "values(oid_seq.nextVal,?,?,?)";
             pstmt = conn.prepareStatement(sql);
             

@@ -5,6 +5,7 @@
     <class>model.Employee</class>
     <class>model.Game</class>
     <class>model.Developer</class>
+    <class>model.Orders</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@//10.10.2.7:1521/global1"/>
       <property name="javax.persistence.jdbc.user" value="x00149335"/>

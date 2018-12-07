@@ -22,24 +22,27 @@ public class Orders {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="oid_seq")
     @Column(name="ID")
-    private int oID;
+    private int ID;
     private int orderNum;
     private int quantity;
     private Date orderDate;
 
-    public int getOID() {
-        return oID;
+    public int getID() {
+        return ID;
     }
 
-    public void setOID(int oID) {
-        this.oID = oID;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
-    public Orders(int oID, int orderNum, int quantity, Date orderDate) {
-        this.oID = oID;
+    public Orders(int ID, int orderNum, int quantity, Date orderDate) {
+        this.ID = ID;
         this.orderNum = orderNum;
         this.quantity = quantity;
         this.orderDate = orderDate;
+    }
+    
+    public Orders() {
     }
 
     public int getOrderNum() {
@@ -68,7 +71,7 @@ public class Orders {
 
     @Override
     public String toString() {
-        return "Order{" + "oID=" + oID + ", orderNum=" + orderNum + ", quantity=" + quantity + ", orderDate=" + orderDate + '}';
+        return "Order{" + "oID=" + ID + ", orderNum=" + orderNum + ", quantity=" + quantity + ", orderDate=" + orderDate + '}';
     }
     
     
