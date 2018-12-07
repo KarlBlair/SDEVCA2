@@ -133,10 +133,9 @@ public class EmployeeOperations {
     
     public void createDeveloperTable() {
         try {
-            String sql = "CREATE TABLE Developer (did NUMBER PRIMARY KEY "
+            String sql = "CREATE TABLE Developer (ID NUMBER PRIMARY KEY "
                     + "NOT NULL,"
                     + "companyName VARCHAR2(35),"
-                    + "role VARCHAR2(25),"
                     + "yearsActive NUMBER)";
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
@@ -336,37 +335,37 @@ public class EmployeeOperations {
     
     public void fillDeveloperTable() {
         try {
-            String sql = "INSERT INTO Developer(did,companyName,yearsActive, role)"
-                    + "values(did_seq.nextVal,?,?,?)";
+            String sql = "INSERT INTO Developer(ID,companyName,yearsActive)"
+                    + "values(did_seq.nextVal,?,?)";
             pstmt = conn.prepareStatement(sql);
             
             pstmt.setString(1, "Nintendo");
             pstmt.setString(2, "14");
-            pstmt.setString(3, "Software Engineer");
+//            pstmt.setString(3, "Software Engineer");
             //pstmt.setString(4, "Jimmy");
             pstmt.executeUpdate();
             
             pstmt.setString(1, "Epic Games");
-            pstmt.setString(2, "4");
-            pstmt.setString(3, "Database Technician");
+            pstmt.setString(2, "10");
+//            pstmt.setString(3, "Database Technician");
             //pstmt.setString(4, "John");
             pstmt.executeUpdate();
             
             pstmt.setString(1, "Rockstar");
-            pstmt.setString(2, "6");
-            pstmt.setString(3, "Animator");
+            pstmt.setString(2, "23");
+//            pstmt.setString(3, "Animator");
             //pstmt.setString(4, "Same");
             pstmt.executeUpdate();
             
             pstmt.setString(1, "Ubisoft");
-            pstmt.setString(2, "9");
-            pstmt.setString(3, "Lead Programmer");
+            pstmt.setString(2, "19");
+//            pstmt.setString(3, "Lead Programmer");
             //pstmt.setString(4, "Joe");
             pstmt.executeUpdate();
 
             pstmt.setString(1, "Blizzard Entertainment");
-            pstmt.setString(2, "3");
-            pstmt.setString(3, "Level Designer");
+            pstmt.setString(2, "30");
+//            pstmt.setString(3, "Level Designer");
             //pstmt.setString(4, "Paul");
             pstmt.executeUpdate();
             

@@ -25,14 +25,12 @@ public class Developer {
     //private String devName;
     private String devID;
     private String companyName;
-    private String role;
     private int yearsActive;
 
-    public Developer(String devID, String companyName, String role, int yearsActive) {
+    public Developer(String devID, String companyName, int yearsActive) {
         //this.devName = devName;
         this.devID = devID;
         this.companyName = companyName;
-        this.role = role;
         this.yearsActive = yearsActive;
     }
     
@@ -44,19 +42,11 @@ public class Developer {
         return devName;
     }*/
 
-    public String getRole() {
-        return role;
-    }
-
     public Developer() {
     }
 
     public String getDevID() {
         return devID;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public String getCompanyName() {

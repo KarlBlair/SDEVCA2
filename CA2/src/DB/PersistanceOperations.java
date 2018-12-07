@@ -44,7 +44,6 @@ public class PersistanceOperations {
     }
 
     //this was removed as we didnt think it made much sense.
-    
     /*public void showALLFT() {
         em.getTransaction().begin();
         TypedQuery<FullTimeEmployee> query
@@ -56,8 +55,19 @@ public class PersistanceOperations {
         }
         em.getTransaction().commit();
     }*/
-    
-    
+    public void showAllDevelopers() {
+        em.getTransaction().begin();
+        
+        TypedQuery<Developer> query 
+                = em.createQuery("SELECT d FROM Developer d",
+                        Developer.class);
+        List<Developer> results = query.getResultList();
+        for(Developer d : results) {
+            System.out.println(String.format("%s: %d: %s ", d.getCompanyName(), d.getYearsActive(), d.getDevID()));
+        }
+        em.getTransaction().commit();
+    }
+
     public void addEmployee(String name) {
         em.getTransaction().begin();
         Employee e = new Employee();
@@ -71,7 +81,6 @@ public class PersistanceOperations {
 //        em.getTransaction().begin();
 //        e.getName();
 //    }
-
     public void addGame(String gameName, String gameGenre) {
         em.getTransaction().begin();
         Game g = new Game();
@@ -96,7 +105,7 @@ public class PersistanceOperations {
                         Game.class);
         List<Game> results = query.getResultList();
         for (Game g : results) {
-            System.out.println(String.format("%s: %s", g.getGameName(), g.getGameGenre()));
+            System.out.println(String.format("%d: %s: %s", g.getID(), g.getGameName(), g.getGameGenre()));
         }
         em.getTransaction().commit();
     }
@@ -115,40 +124,37 @@ public class PersistanceOperations {
         em.remove(m);
         em.getTransaction().commit();
     }
-    
+
     public void removeEmployee(int empid) {
         Employee e = em.find(Employee.class, empid);
         em.getTransaction().begin();
         em.remove(e);
         em.getTransaction().commit();
     }
-    
-    public void addDeveloper(String did, String devName, String companyName, int yearsActive){
+
+    public void addDeveloper(String did, String companyName, int yearsActive) {
         em.getTransaction().begin();
         Developer d = new Developer();
         d.getDevID();
         d.getCompanyName();
-        d.getRole();
         d.getYearsActive();
         em.persist(d);
         em.getTransaction().commit();
     }
-    
+
     public void removeDeveloper(String did) {
         Developer d = em.find(Developer.class, did);
         em.getTransaction().begin();
         em.remove(d);
         em.getTransaction().begin();
     }
-    
+
     //Dont try implement this, doesnt make senes to have this as an option.
-    
 //    public void changeDeveloperCompany(String did) {
 //        Developer d = em.find(Developer.class ,did);
 //        em.getTransaction().begin();
 //        d.getCompanyName();
 //    }
-
     public void close() {
         em.close();
         emf.close();

@@ -64,9 +64,10 @@ public class GameStoreDBTest {
             System.out.println("Please press 6 to view all Games on Record");
             System.out.println("Please press 7 to add a new game");
             System.out.println("Please press 8 to remove a game");
-            System.out.println("Please press 9 to add a new developer record");
-            System.out.println("Please press 10 to remove a developer record");
-            System.out.println("Please press 11 to exit");
+            System.out.println("Please press 9 to view all available Developers");
+            System.out.println("Please press 10 to add a new developer record");
+            System.out.println("Please press 11 to remove a developer record");
+            System.out.println("Please press 12 to exit");
 
             int choice = in.nextInt();
 
@@ -111,12 +112,15 @@ public class GameStoreDBTest {
                     po.addGame(gameName, gameGenre);
                     break;
                 case 8:
-                    System.out.println("Please enter the name of the game you would like to remove ");
+                    System.out.println("Please enter the ID of the game you would like to remove ");
                     in.nextLine();
                     int gameID = in.nextInt();
                     po.removeGame(gameID);
                     break;
                 case 9:
+                    po.showAllDevelopers();
+                    break;
+                case 10:
                     /* do we want to have the employee names? or just companies? ask tomorrow */
                     System.out.println("Please enter the name of the Developer you want to add ");
                     String devName = in.nextLine();
@@ -125,11 +129,11 @@ public class GameStoreDBTest {
                     System.out.println("Ask about this");
                     //po.addDeveloper(mID,devName, companyName, yearsActive);
                     break;
-                case 10:
+                case 11:
                     System.out.println("Please enter the ID of the developer you wish to remove ");
                     int devID = in.nextInt();
                     // do this
-                case 11:
+                case 12:
                     po.close();
                     run = false;
                     break;
