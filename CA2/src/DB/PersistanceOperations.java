@@ -81,8 +81,8 @@ public class PersistanceOperations {
         em.getTransaction().commit();
     }
 
-    public void removeGame(String gameName, String gameDeveloper) {
-        Game g = em.find(Game.class, gameName);
+    public void removeGame(int gameID) {
+        Game g = em.find(Game.class, gameID);
         em.getTransaction().begin();
         em.remove(g);
         em.getTransaction().commit();

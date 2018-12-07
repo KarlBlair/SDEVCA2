@@ -107,16 +107,14 @@ public class GameStoreDBTest {
                     String gameName = in.nextLine();
 
                     System.out.println("Please enter the name of the Game Genre for the game that you added ");
-                    in.nextLine();
                     String gameGenre = in.nextLine();
                     po.addGame(gameName, gameGenre);
                     break;
                 case 8:
                     System.out.println("Please enter the name of the game you would like to remove ");
                     in.nextLine();
-                    gameName = in.nextLine();
-                    gameGenre = in.nextLine();
-                    po.removeGame(gameName, gameGenre);
+                    int gameID = in.nextInt();
+                    po.removeGame(gameID);
                     break;
                 case 9:
                     /* do we want to have the employee names? or just companies? ask tomorrow */
