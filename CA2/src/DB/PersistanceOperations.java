@@ -63,7 +63,7 @@ public class PersistanceOperations {
                         Developer.class);
         List<Developer> results = query.getResultList();
         for(Developer d : results) {
-            System.out.println(String.format("%s: %d: %s ", d.getCompanyName(), d.getYearsActive(), d.getDevID()));
+            System.out.println(String.format("%s %d: %s", d.getCompanyName(), d.getYearsActive(), d.getDevID()));
         }
         em.getTransaction().commit();
     }
@@ -132,12 +132,11 @@ public class PersistanceOperations {
         em.getTransaction().commit();
     }
 
-    public void addDeveloper(String did, String companyName, int yearsActive) {
+    public void addDeveloper(String companyName, int yearsActive) {
         em.getTransaction().begin();
         Developer d = new Developer();
-        d.getDevID();
-        d.getCompanyName();
-        d.getYearsActive();
+        d.setCompanyName(companyName);
+        d.setYearsActive(yearsActive);
         em.persist(d);
         em.getTransaction().commit();
     }
